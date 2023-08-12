@@ -1,11 +1,11 @@
 # KULTURE WEB APPLICATION FRONTEND
 
-This is the main application for the public domain for Elite Homes.
+This is the main application for the public domain for KULTURE
 
 ## WEBSITE URL
 
-Netlify:-
-Vercel:-
+Netlify:- https://zojatech-kulture.netlify.app
+Vercel:- https://kulture-inky.vercel.app
 
 ## FIGMA DESIGN FILE
 
