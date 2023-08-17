@@ -1,12 +1,12 @@
 import styles from "./Beats.module.scss";
 import profileImage from "../images/profileImage.png";
 import beatImg from "../images/beatImg.png";
-import { PiPaperPlaneTiltBold } from "react-icons/pi";
-import { FaRegHeart } from "react-icons/fa";
+// import { PiPaperPlaneTiltBold } from "react-icons/pi";
+// import { FaRegHeart } from "react-icons/fa";
 
 const Beats = () => {
   return (
-    <>      
+    <>
       <div className={styles.beats}>
         <div className={styles.beatProfile}>
           <img
@@ -32,11 +32,11 @@ const Beats = () => {
         </div>
         <div className={styles.shareSave}>
           <div className={styles.btnFlexx}>
-            <PiPaperPlaneTiltBold size={20} />
+            {/* <PiPaperPlaneTiltBold size={20} /> */}
             <button className={styles.shareBtn}>Share</button>
           </div>
           <div className={styles.btnFlex}>
-            <FaRegHeart size={20} />
+            {/* <FaRegHeart size={20} /> */}
             <button className={styles.saveBtn}>Save for later</button>
           </div>
         </div>
@@ -67,11 +67,11 @@ const Beats = () => {
         </div>
         <div className={styles.shareSave}>
           <div className={styles.btnFlexx}>
-            <PiPaperPlaneTiltBold size={20} />
+            {/* <PiPaperPlaneTiltBold size={20} /> */}
             <button className={styles.shareBtn}>Share</button>
           </div>
           <div className={styles.btnFlex}>
-            <FaRegHeart size={20} />
+            {/* <FaRegHeart size={20} /> */}
             <button className={styles.saveBtn}>Save for later</button>
           </div>
         </div>
@@ -101,11 +101,11 @@ const Beats = () => {
         </div>
         <div className={styles.shareSave}>
           <div className={styles.btnFlexx}>
-            <PiPaperPlaneTiltBold size={20} />
+            {/* <PiPaperPlaneTiltBold size={20} /> */}
             <button className={styles.shareBtn}>Share</button>
           </div>
           <div className={styles.btnFlex}>
-            <FaRegHeart size={20} />
+            {/* <FaRegHeart size={20} /> */}
             <button className={styles.saveBtn}>Save for later</button>
           </div>
         </div>
@@ -135,11 +135,11 @@ const Beats = () => {
         </div>
         <div className={styles.shareSave}>
           <div className={styles.btnFlexx}>
-            <PiPaperPlaneTiltBold size={20} />
+            {/* <PiPaperPlaneTiltBold size={20} /> */}
             <button className={styles.shareBtn}>Share</button>
           </div>
           <div className={styles.btnFlex}>
-            <FaRegHeart size={20} />
+            {/* <FaRegHeart size={20} /> */}
             <button className={styles.saveBtn}>Save for later</button>
           </div>
         </div>
@@ -169,11 +169,11 @@ const Beats = () => {
         </div>
         <div className={styles.shareSave}>
           <div className={styles.btnFlexx}>
-            <PiPaperPlaneTiltBold size={20} />
+            {/* <PiPaperPlaneTiltBold size={20} /> */}
             <button className={styles.shareBtn}>Share</button>
           </div>
           <div className={styles.btnFlex}>
-            <FaRegHeart size={20} />
+            {/* <FaRegHeart size={20} /> */}
             <button className={styles.saveBtn}>Save for later</button>
           </div>
         </div>
@@ -203,11 +203,11 @@ const Beats = () => {
         </div>
         <div className={styles.shareSave}>
           <div className={styles.btnFlexx}>
-            <PiPaperPlaneTiltBold size={20} />
+            {/* <PiPaperPlaneTiltBold size={20} /> */}
             <button className={styles.shareBtn}>Share</button>
           </div>
           <div className={styles.btnFlex}>
-            <FaRegHeart size={20} />
+            {/* <FaRegHeart size={20} /> */}
             <button className={styles.saveBtn}>Save for later</button>
           </div>
         </div>

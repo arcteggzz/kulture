@@ -1,4 +1,4 @@
-import { BiSearch } from "react-icons/bi";
+// import { BiSearch } from "react-icons/bi";
 import styles from "./Hero.module.scss";
 import hero from "../image/hero.png";
 
@@ -18,7 +18,7 @@ const Hero = () => {
       <div className={styles.searchBtn}>
         <div>
           <button className={styles.find}>Find trending beats</button>
-          <BiSearch size={20} className={styles.searchIcon} />
+          {/* <BiSearch size={20} className={styles.searchIcon} /> */}
         </div>
         <button className={styles.uploadBtn}>UPLOAD YOUR BEAT</button>
       </div>

@@ -1,6 +1,6 @@
 @use "../../assets/styles/" as *;
 
-.CredentialsPageLayout {
+.GeneralPageLayout {
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -13,6 +13,7 @@
     align-items: center;
     width: 100%;
     max-width: 1720px;
+    min-height: 100vh;
 
     .Navbar_container {
       width: 100vw;
@@ -28,29 +29,18 @@
         width: 100%;
         max-width: 1740px;
         // border: 1px blue solid;
-
-        nav {
-          width: 100%;
-          padding: 0 pixRem(100);
-          height: pixRem(128);
-          display: flex;
-          align-items: center;
-
-          @include sm() {
-            display: none;
-          }
-        }
       }
     }
 
     .Outlet_container {
       //this matches the height of the navbar and required to make it fixed
-      margin-top: pixRem(128);
+      margin-top: pixRem(100);
       width: 100%;
       display: flex;
       justify-content: center;
       overflow: hidden;
       // border: 1px red solid;
+      min-height: 100vh;
 
       @include md() {
         margin-top: pixRem(88);
