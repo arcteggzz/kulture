@@ -1,0 +1,68 @@
+@use "../../../../assets/styles/" as *;
+
+section {
+  margin-top: 30px;
+  .feedFlex {
+    display: grid;
+    grid-template-columns: 40% auto;
+    margin-top: 25px;
+    gap: 20px;
+    .trends {
+      background-color: #1b1b1b;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 25px;
+      h3 {
+        margin-top: 14px;
+        font-weight: 400;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 20px;
+        margin-bottom: 35px;
+        color: #e2e2e2;
+      }
+    }
+    .producers {
+      background-color: #1b1b1b;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 25px;
+
+      .popularProducer {
+        display: flex;
+        margin-top: 20px;
+        .profileImage {
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+        }
+        p {
+          margin-left: 20px;
+          font-size: 24px;
+          color: #e2e2e2;
+        }
+      }
+    }
+    div {
+      .filter {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .link {
+          text-decoration: none;
+          color: white;
+          font-size: 24px;
+          margin-right: 8px;
+        }
+        select {
+          margin-left: 8px;
+          border: none;
+          border-radius: 8px;
+          padding: 13px 40px;
+        }
+      }
+    }
+  }
+}

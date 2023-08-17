@@ -14,7 +14,7 @@ import {
 // import PersistLogin from "./utils/PersistLogin.jsx";
 
 //Pages
-import { SplashPage, LandingPage, SignUpPage, UploadPage } from "./pages";
+import { SplashPage, LandingPage, SignUpPage, UploadPage, SearchPage } from "./pages";
 
 //lazyLoading for pages
 // const UploadPage = lazy(() => import("./pages"));
@@ -27,7 +27,7 @@ const App = () => {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path={`${routePaths.SPLASHPAGE}`} element={<SplashPage />} />
-
+          <Route path={`${routePaths.SEARCHPAGE}`} element={<SearchPage />} />
           {/* Authentication routes */}
           <Route element={<CredentialsPageLayout />}>
             <Route path={`${routePaths.SIGNUPPAGE}`} element={<SignUpPage />} />

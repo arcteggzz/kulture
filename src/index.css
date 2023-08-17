@@ -10,6 +10,11 @@
   overflow-y: auto;
 }
 
+body{
+  background-color: #0A0A09;
+  color: white;
+}
+
 * {
   padding: 0;
   margin: 0;

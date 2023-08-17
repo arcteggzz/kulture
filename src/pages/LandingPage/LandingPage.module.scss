@@ -1,9 +1,16 @@
 @use "../../assets/styles/" as *;
 
+.hero{
+  width: 80%;
+  margin: auto ;
+}
 .LandingPage {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  width: 50%;
+  margin: 20px auto 0;
+  background-color: #0a0a09;
+  color: white;
+
+  
 
   @include sm() {
   }

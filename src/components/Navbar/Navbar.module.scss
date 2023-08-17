@@ -1,7 +1,65 @@
 @use "../../assets/styles/" as *;
 
 .Navbar {
-  display: flex;
+  width: 80%;
+  margin: auto;
+
+  .dFlex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    width: 98.5%;
+    .logo {
+      margin-left: 10px;
+    }
+    .links {
+      display: flex;
+      justify-content: space-between;
+      .linkBtn {
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        cursor: pointer;
+        .link {
+          text-decoration: none;
+          color: white;
+          margin-left: 10px;
+        }
+      }
+      .linkBtn:hover,
+      .link:hover {
+        background-color: #ddc8f9;
+        color: #6600e8;
+      }
+      .signup {
+        border: 2px solid white;
+        border-radius: 8px;
+        padding: 14px 20px;
+        color: white;
+        text-decoration: none;
+        margin-left: 10px;
+      }
+      .signup:hover{
+        background-color: #6600e8;
+        border: 2px solid #6600e8
+      }
+    }
+  }
+
+  // .hero {
+  //   position: relative;
+   
+
+  //   .navigation {
+  //     position: absolute;
+  //     top: 5%;
+  //     width: 98%;
+
+      
+  //   }
+  // }
 
   @include sm() {
   }

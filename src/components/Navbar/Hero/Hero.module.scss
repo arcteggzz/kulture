@@ -1,0 +1,69 @@
+@use "../../../assets/styles/" as *;
+
+.Hero {
+  position: relative;
+  .heroBG {
+    img {
+      max-width: 100%;
+      height: 467px;
+    }
+  }
+  h1 {
+    position: absolute;
+    top: 26%;
+    width: 98.5%;
+    font-size: 45px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  p {
+    position: absolute;
+    top: 50%;
+    width: 98%;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    text-align: center;
+  }
+
+  .searchBtn {
+    position: absolute;
+    top: 68%;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    div {
+      display: flex;
+      align-items: center;
+      border: 2px solid white;
+      padding: 13px;
+      margin-right: 20px;
+      border-radius: 5px;
+      .find {
+        color: white;
+        border: none;
+        background-color: transparent;
+        font-size: 16px;
+        margin-right: 80px;
+        letter-spacing: 0.28px;
+
+        .searchIcon {
+          margin-left: 70px;
+        }
+      }
+    }
+    .uploadBtn {
+      background-color: #6600e8;
+      border-radius: 5px;
+      border: none;
+      padding: 16px;
+      color: white;
+    }
+  }
+
+  @include sm() {
+  }
+}
