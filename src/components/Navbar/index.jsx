@@ -1,13 +1,13 @@
 import styles from "./Navbar.module.scss";
-import Logo from "./image/Logo.png";
-import Home from "./image/Home.png";
-import upload from "./image/upload.png";
-import cart from "./image/shopping-cart.png";
-import profileImage from "./image/profileImage.png";
-import arrow from "./image/arrow-right.png";
+import kulture_logo from "./images/kulture_logo.png";
+import Home from "./images/home.png";
+import upload from "./images/upload.png";
+import cart from "./images/shopping-cart.png";
+import profileImage from "./images/profileImage.png";
+import arrow from "./images/arrow-right.png";
 import { Link, useLocation } from "react-router-dom";
 import { routePaths } from "../../utils";
-import searchIcon from "./image/search-icon.png";
+import searchIcon from "./images/search-icon.png";
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -18,7 +18,7 @@ export default function Navbar() {
       <nav className={styles.Navbar}>
         <div className={styles.dFlex}>
           <div className={styles.left_side}>
-            <img src={Logo} alt="" className={styles.logo} />
+            <img src={kulture_logo} alt="" className={styles.logo} />
             {/* Search bar goes inside the div below */}
             {pathname !== `${routePaths.LANDINGPAGE}` ? (
               <div>
@@ -60,13 +60,8 @@ export default function Navbar() {
                   alt="Profile Image"
                   className={styles.profileImage}
                 />
-                <p>
-                 Hi, Miriam 
-                </p>
-                 <img
-                  src={arrow}
-                  alt="Profile Image"
-                />
+                <p>Hi, Miriam</p>
+                <img src={arrow} alt="Profile Image" />
               </div>
             )}
           </div>
