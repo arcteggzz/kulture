@@ -1,26 +1,21 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-import styles from "./AuthenticatedPageLayout.module.scss";
+import { Outlet, useLocation, Navigate } from "react-router-dom";
+import { routePaths } from "../../utils";
 
 export default function AuthenticatedPageLayout() {
+  const currentAccessToken = true;
+  const location = useLocation();
+
   return (
     <>
-      <div className={styles.AuthenticatedPageLayout}>
-        <div className={styles.main_container}>
-          <div className={styles.Navbar_container}>
-            <div className={styles.Navbar_Child_Container}>
-              <Navbar />
-            </div>
-          </div>
-          <div className={styles.Outlet_container}>
-            <div className={styles.Outlet_Child_Container}>
-              <Outlet />
-            </div>
-          </div>
-          <Footer />
-        </div>
-      </div>
+      {currentAccessToken ? (
+        <Outlet />
+      ) : (
+        <Navigate
+          to={`${routePaths.LOGINCATCHPAGE}`}
+          state={{ from: location }}
+          replace
+        />
+      )}
     </>
   );
 }

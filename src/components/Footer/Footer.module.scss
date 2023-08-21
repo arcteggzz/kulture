@@ -1,7 +1,13 @@
 @use "../../assets/styles/" as *;
 
 .Footer {
-  display: flex;
+  width: 50%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  div{
+    display: flex;
+    justify-content: space-between;
+  }
 
   @include sm() {
   }
