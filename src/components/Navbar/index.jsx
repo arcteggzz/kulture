@@ -1,5 +1,5 @@
 import styles from "./Navbar.module.scss";
-import Logo from "./images/logo.png";
+import kulture_logo from "./images/kulture_logo.png";
 import Home from "./images/home.png";
 import upload from "./images/upload.png";
 import cart from "./images/shopping-cart.png";
@@ -18,7 +18,7 @@ export default function Navbar() {
       <nav className={styles.Navbar}>
         <div className={styles.dFlex}>
           <div className={styles.left_side}>
-            <img src={Logo} alt="" className={styles.logo} />
+            <img src={kulture_logo} alt="" className={styles.logo} />
             {/* Search bar goes inside the div below */}
             {pathname !== `${routePaths.LANDINGPAGE}` ? (
               <div>
