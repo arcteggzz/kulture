@@ -1,6 +1,6 @@
-// import { BiSearch } from "react-icons/bi";
 import styles from "./Hero.module.scss";
-import hero from "../image/hero.png";
+import hero from "./images/hero.png";
+import searchIcon from "./images/search-icon.png";
 
 const Hero = () => {
   return (
@@ -17,8 +17,10 @@ const Hero = () => {
       </p>
       <div className={styles.searchBtn}>
         <div>
-          <button className={styles.find}>Find trending beats</button>
-          {/* <BiSearch size={20} className={styles.searchIcon} /> */}
+          <input className={styles.find} placeholder="Find trending beats" />
+          <button className={styles.searchIcon}>
+            <img src={searchIcon} />
+          </button>
         </div>
         <button className={styles.uploadBtn}>UPLOAD YOUR BEAT</button>
       </div>

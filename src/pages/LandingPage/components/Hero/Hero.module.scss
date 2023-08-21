@@ -1,10 +1,14 @@
-@use "../../../assets/styles/" as *;
+@use "../../../../assets/styles/" as *;
 
 .Hero {
   position: relative;
+  margin-top: -9.5%;
+  background-image: url(./image/Hero.png);
+  background-size: cover;
+  
   .heroBG {
     img {
-      max-width: 100%;
+      width: 100%;
       height: 467px;
     }
   }
@@ -43,16 +47,29 @@
       margin-right: 20px;
       border-radius: 5px;
       .find {
-        color: white;
         border: none;
         background-color: transparent;
-        font-size: 16px;
-        margin-right: 80px;
+        font-size: 20px;
+        color: white;
+        margin-right: 8px;
         letter-spacing: 0.28px;
 
-        .searchIcon {
-          margin-left: 70px;
-        }
+      }
+      .searchIcon {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+      ::placeholder {
+        color: white;
+      }
+      .find:focus {
+        outline: none;
+        background-color: transparent;
+        font-size: 20px;
+        color: white;
+        margin-right: 8px;
+        letter-spacing: 0.28px;
       }
     }
     .uploadBtn {
@@ -61,6 +78,7 @@
       border: none;
       padding: 16px;
       color: white;
+      cursor: pointer;
     }
   }
 

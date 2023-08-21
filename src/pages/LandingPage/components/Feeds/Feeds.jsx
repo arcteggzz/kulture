@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Feeds = () => {
   return (
     <>
-      <section>
+      <section className={styles.Feeds}>
         <h2>Feed</h2>
         <div className={styles.feedFlex}>
           <div>
@@ -55,11 +55,13 @@ const Feeds = () => {
           </div>
 
           <div>
-            <div className={styles.filter}>
-              <Link className={styles.link}>All</Link>
-              <Link className={styles.link}>Afro Beats</Link>
-              <Link className={styles.link}>World</Link>
-              <Link className={styles.link}>Juju</Link>
+            <div className={styles.dFlex}>
+              <div className={styles.filter}>
+                <Link className={styles.link}>All</Link>
+                <Link className={styles.link}>Afro Beats</Link>
+                <Link className={styles.link}>World</Link>
+                <Link className={styles.link}>Juju</Link>
+              </div>
               <form>
                 <select name="Beats">
                   <options value="A">A</options>

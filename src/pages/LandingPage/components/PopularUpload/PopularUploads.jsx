@@ -3,9 +3,9 @@ import image from "../images/upload.png";
 
 const PopularUploads = () => {
   return (
-    <>
+    <div className={styles.PopularUploads}>
       <h2>Popular Uploads</h2>
-      <section className={styles.PopularUploads}>
+      <section className={styles.uploads}>
         <div>
           <img className={styles.imgUpload} src={image} alt="uploaded Image" />
           <p className={styles.text}>
@@ -31,7 +31,7 @@ const PopularUploads = () => {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

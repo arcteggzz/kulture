@@ -1,7 +1,11 @@
 @use "../../../../assets/styles/" as *;
 
-section {
-  margin-top: 30px;
+.Feeds {
+  width: 65%;
+  margin: auto;
+  h2{
+    margin-top: 20px;
+  }
   .feedFlex {
     display: grid;
     grid-template-columns: 40% auto;
@@ -45,16 +49,20 @@ section {
       }
     }
     div {
-      .filter {
-        background-color: black;
+      .dFlex{
         display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        .link {
-          text-decoration: none;
-          color: white;
-          font-size: 24px;
-          margin-right: 8px;
+        justify-content: space-between;
+        background-color: black;
+        .filter {
+          display: flex;
+          align-items: center;
+  
+          .link {
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            margin-right: 8px;
+          }
         }
         select {
           margin-left: 8px;

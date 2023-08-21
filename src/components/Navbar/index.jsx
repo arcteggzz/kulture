@@ -3,11 +3,15 @@ import Logo from "./image/Logo.png";
 import Home from "./image/Home.png";
 import upload from "./image/upload.png";
 import cart from "./image/shopping-cart.png";
+import profileImage from "./image/profileImage.png";
+import arrow from "./image/arrow-right.png";
 import { Link, useLocation } from "react-router-dom";
 import { routePaths } from "../../utils";
+import searchIcon from "./image/search-icon.png";
 
 export default function Navbar() {
   const { pathname } = useLocation();
+  const login = false;
 
   return (
     <>
@@ -17,7 +21,15 @@ export default function Navbar() {
             <img src={Logo} alt="" className={styles.logo} />
             {/* Search bar goes inside the div below */}
             {pathname !== `${routePaths.LANDINGPAGE}` ? (
-              <input className={styles.input_container} />
+              <div>
+                <input
+                  className={styles.input_container}
+                  placeholder="Search"
+                />
+                <button className={styles.searchIcon}>
+                  <img src={searchIcon} />
+                </button>
+              </div>
             ) : (
               <></>
             )}
@@ -36,8 +48,27 @@ export default function Navbar() {
               <img src={upload} alt="" />
               <Link className={styles.link}>Upload</Link>
             </div>
-            <Link className={styles.signup}>Signin</Link>
-            <Link className={styles.signup}>Sign up</Link>
+            {login ? (
+              <div className={styles.signContainer}>
+                <Link className={styles.signin}>Signin</Link>
+                <Link className={styles.signup}>Sign up</Link>
+              </div>
+            ) : (
+              <div className={styles.login}>
+                <img
+                  src={profileImage}
+                  alt="Profile Image"
+                  className={styles.profileImage}
+                />
+                <p>
+                 Hi, Miriam 
+                </p>
+                 <img
+                  src={arrow}
+                  alt="Profile Image"
+                />
+              </div>
+            )}
           </div>
         </div>
       </nav>
