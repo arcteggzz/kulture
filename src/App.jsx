@@ -4,17 +4,21 @@ import { AnimatePresence } from "framer-motion";
 import { routePaths } from "./utils/";
 
 //Layouts
-import {
-  PublicPageLayout,
-  AuthenticatedPageLayout,
-  CredentialsPageLayout,
-} from "./layouts";
+import { GeneralPageLayout, AuthenticatedPageLayout } from "./layouts";
 
 //Utilities
 // import PersistLogin from "./utils/PersistLogin.jsx";
 
 //Pages
-import { SplashPage, LandingPage, SignUpPage, UploadPage } from "./pages";
+import {
+  SplashPage,
+  LandingPage,
+  SignUpPage,
+  UploadPage,
+  SearchPage,
+  LoginCatchPage,
+  UserProfilePage,
+} from "./pages";
 
 //lazyLoading for pages
 // const UploadPage = lazy(() => import("./pages"));
@@ -27,23 +31,31 @@ const App = () => {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path={`${routePaths.SPLASHPAGE}`} element={<SplashPage />} />
+          <Route path={`${routePaths.SIGNUPPAGE}`} element={<SignUpPage />} />
+          <Route
+            path={`${routePaths.LOGINCATCHPAGE}`}
+            element={<LoginCatchPage />}
+          />
 
-          {/* Authentication routes */}
-          <Route element={<CredentialsPageLayout />}>
-            <Route path={`${routePaths.SIGNUPPAGE}`} element={<SignUpPage />} />
-          </Route>
-
-          {/* public routes */}
-          <Route element={<PublicPageLayout />}>
+          {/* GENERAL LAYOUT */}
+          <Route element={<GeneralPageLayout />}>
             <Route
               path={`${routePaths.LANDINGPAGE}`}
               element={<LandingPage />}
             />
-          </Route>
+            <Route path={`${routePaths.SEARCHPAGE}`} element={<SearchPage />} />
 
-          {/* private routes */}
-          <Route element={<AuthenticatedPageLayout />}>
-            <Route path={`${routePaths.UPLOADPAGE}`} element={<UploadPage />} />
+            {/* private routes */}
+            <Route element={<AuthenticatedPageLayout />}>
+              <Route
+                path={`${routePaths.UPLOADPAGE}`}
+                element={<UploadPage />}
+              />
+              <Route
+                path={`${routePaths.USERPROFILEPAGE}`}
+                element={<UserProfilePage />}
+              />
+            </Route>
           </Route>
         </Routes>
       </AnimatePresence>

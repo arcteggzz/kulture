@@ -1,0 +1,84 @@
+@use "../../../../assets/styles/" as *;
+
+.beats {
+  background-color: #1b1b1b;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  .beatProfile {
+    display: flex;
+    align-items: center;
+    .profileImage {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    p {
+      margin-left: 10px;
+      font-size: 24px;
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+  .beatDetails {
+    display: flex;
+    margin-top: 20px;
+    h2 {
+      margin-left: 18px;
+    }
+    .beatImg {
+      width: 109.49px;
+      height: 126px;
+      border-radius: 10px;
+    }
+    .buyBtn {
+      background-color: #6600e8;
+      padding: 16px 32px;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      color: white;
+    }
+    div {
+      p {
+        margin: 0 0 10px 20px;
+      }
+      .price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 25px;
+      }
+    }
+  }
+
+  .shareSave {
+    display: flex;
+    margin-top: 20px;
+
+    .btnFlexx {
+      display: flex;
+      align-items: center;
+    }
+    .btnFlex {
+      display: flex;
+      align-items: center;
+      margin-left: 65px;
+    }
+    .shareBtn {
+      margin-left: 8px;
+      background-color: #1b1b1b;
+      border: none;
+      cursor: pointer;
+      color: #e2e2e2;
+    }
+    .saveBtn {
+      margin-left: 8px;
+      background-color: #1b1b1b;
+      border: none;
+      cursor: pointer;
+      color: #e2e2e2;
+    }
+  }
+}

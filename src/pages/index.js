@@ -6,5 +6,5 @@ export { default as MyOrdersPage } from "./MyOrdersPage";
 export { default as MyUploadsPage } from "./MyUploadsPage";
 export { default as SavedItemsPage } from "./SavedItemsPage";
 export { default as SearchPage } from "./SearchPage";
-export { default as UserProfileBuyer } from "./UserProfileBuyer";
-export { default as UserProfileSeller } from "./UserProfileSeller";
+export { default as UserProfilePage } from "./UserProfilePage";
+export { default as LoginCatchPage } from "./LoginCatchPage";

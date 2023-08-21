@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import styles from "./PublicPageLayout.module.scss";
+import styles from "./GeneralPageLayout.module.scss";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-export default function PublicPageLayout() {
+export default function GeneralPageLayout() {
   return (
     <>
-      <div className={styles.PublicPageLayout}>
+      <div className={styles.GeneralPageLayout}>
         <div className={styles.main_container}>
           <div className={styles.Navbar_container}>
             <div className={styles.Navbar_Child_Container}>

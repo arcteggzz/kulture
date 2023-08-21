@@ -1,0 +1,40 @@
+@use "../../../assets/styles/" as *;
+
+
+.BrowseBeats {
+  margin: 50px 0;
+  .dFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    h3 {
+      margin-top: 10px;
+    }
+  }
+  .flexBeats {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 25%;
+    row-gap: 15px;
+    margin-top: 20px;
+
+    .content {
+      display: flex;
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+      }
+      div {
+        margin-left: 20px;
+        p{
+            margin-top: 4px;
+            font-size: 16px;
+        }
+      }
+    }
+  }
+
+  @include sm() {
+  }
+}

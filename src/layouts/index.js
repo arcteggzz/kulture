@@ -1,3 +1,2 @@
-export { default as PublicPageLayout } from "./PublicPageLayout";
+export { default as GeneralPageLayout } from "./GeneralPageLayout";
 export { default as AuthenticatedPageLayout } from "./AuthenticatedPageLayout";
-export { default as CredentialsPageLayout } from "./CredentialsPageLayout";

@@ -1,7 +1,132 @@
 @use "../../assets/styles/" as *;
 
 .Navbar {
-  display: flex;
+  width: 80%;
+  margin: auto;
+  height: 100px;
+  background-image: url(./image/Hero.png);
+  background-size: cover;
+  padding-top: 20px;
+
+  .dFlex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .left_side {
+      display: flex;
+      column-gap: 50px;
+
+      .logo {
+        margin-left: 10px;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        border: 2px solid white;
+        padding: 13px;
+        margin-right: 20px;
+        border-radius: 5px;
+
+        .input_container {
+          border: none;
+          background-color: transparent;
+          font-size: 20px;
+          color: white;
+          margin-right: 8px;
+          letter-spacing: 0.28px;
+        }
+
+        .searchIcon {
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+        }
+        ::placeholder {
+          color: white;
+        }
+        .input_container:focus {
+          outline: none;
+          background-color: transparent;
+          font-size: 20px;
+          color: white;
+          margin-right: 8px;
+          letter-spacing: 0.28px;
+        }
+      }
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      .linkBtn {
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        cursor: pointer;
+        .link {
+          text-decoration: none;
+          color: white;
+          margin-left: 10px;
+        }
+      }
+      .linkBtn:hover,
+      .link:hover {
+        background-color: #ddc8f9;
+        color: #6600e8;
+      }
+      .signContainer {
+        display: flex;
+        .signup {
+          border: 2px solid white;
+          border-radius: 8px;
+          padding: 14px 20px;
+          color: white;
+          text-decoration: none;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+        .signup:hover {
+          background-color: #6600e8;
+          border: 2px solid #6600e8;
+        }
+        .signin {
+          border-radius: 8px;
+          padding: 14px 20px;
+          color: white;
+          text-decoration: none;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+        .signin:hover {
+          background-color: #6600e8;
+        }
+      }
+    }
+    .login {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+      margin-right: 10px;
+      .profileImage {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      p {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 20px;
+        span {
+          font-size: 18px;
+        }
+      }
+     
+    }
+  }
 
   @include sm() {
   }

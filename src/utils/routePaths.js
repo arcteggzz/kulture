@@ -3,8 +3,9 @@ const routePaths = {
   LANDINGPAGE: "/home",
   UPLOADPAGE: "/upload",
   SIGNUPPAGE: "/signup",
-  USERPROFILE: "/dashboard/",
+  USERPROFILEPAGE: "/dashboard",
   SEARCHPAGE: "/search",
+  LOGINCATCHPAGE: "/login-required",
 };
 
 export default routePaths;
