@@ -8,10 +8,18 @@ import arrow from "./images/arrow-right.png";
 import { Link, useLocation } from "react-router-dom";
 import { routePaths } from "../../utils";
 import searchIcon from "./images/search-icon.png";
+import { useDispatch } from "react-redux";
+import { openLoginModal } from "../../redux/features/loginModal/loginModalSlice";
 
 export default function Navbar() {
   const { pathname } = useLocation();
-  const login = false;
+  const dispatch = useDispatch();
+
+  const login = true;
+
+  const openLoginModalHandler = () => {
+    dispatch(openLoginModal());
+  };
 
   return (
     <>
@@ -50,8 +58,16 @@ export default function Navbar() {
             </div>
             {login ? (
               <div className={styles.signContainer}>
-                <Link className={styles.signin}>Signin</Link>
-                <Link className={styles.signup}>Sign up</Link>
+                <button
+                  onClick={() => openLoginModalHandler()}
+                  className={styles.signin}
+                >
+                  Signin
+                </button>
+
+                <Link className={styles.signup} to={routePaths.SIGNUPPAGE}>
+                  Sign up
+                </Link>
               </div>
             ) : (
               <div className={styles.login}>

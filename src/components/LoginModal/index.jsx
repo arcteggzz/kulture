@@ -1,17 +1,26 @@
 import styles from "./LoginModal.module.scss";
-import cancel from "./image/cancel.pmg";
+import cancel from "./image/cancel.png";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { closeLoginModal } from "../../redux/features/loginModal/loginModalSlice";
 
 export default function LoginModal() {
+  const dispatch = useDispatch();
+
+  const closeLoginModalHandler = () => {
+    dispatch(closeLoginModal());
+  };
+
   return (
     <>
-      <nav className={styles.LoginModal}>
+      <div className={styles.LoginModal}>
         <div className={styles.dflex}>
           <h3>Signin</h3>
-          <img src={cancel} />
+          <button onClick={() => closeLoginModalHandler()}>
+            <img src={cancel} />
+          </button>
         </div>
         <p>
-          {" "}
           Enter details to signin, dont have an accoount
           <Link className={styles.link}> signup</Link>
         </p>
@@ -35,7 +44,7 @@ export default function LoginModal() {
             <button className={styles.signIn_btn}>Signin</button>
           </div>
         </form>
-      </nav>
+      </div>
     </>
   );
 }

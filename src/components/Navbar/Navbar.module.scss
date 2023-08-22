@@ -79,6 +79,7 @@
       }
       .signContainer {
         display: flex;
+
         .signup {
           border: 2px solid white;
           border-radius: 8px;
@@ -88,10 +89,14 @@
           margin-left: 10px;
           margin-right: 10px;
         }
+
         .signup:hover {
           background-color: #6600e8;
           border: 2px solid #6600e8;
         }
+
+        border: none;
+
         .signin {
           border-radius: 8px;
           padding: 14px 20px;
@@ -100,6 +105,7 @@
           margin-left: 10px;
           margin-right: 10px;
         }
+
         .signin:hover {
           background-color: #6600e8;
         }
@@ -123,7 +129,6 @@
           font-size: 18px;
         }
       }
-     
     }
   }
 
