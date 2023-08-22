@@ -63,10 +63,10 @@ const Feeds = () => {
                 <Link className={styles.link}>Juju</Link>
               </div>
               <form>
-                <select name="Beats">
-                  <options value="A">A</options>
-                  <options value="B">B</options>
-                  <options value="C">C</options>
+                <select name="Beats" >
+                  <option value="Filter">Filter</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
                 </select>
               </form>
             </div>

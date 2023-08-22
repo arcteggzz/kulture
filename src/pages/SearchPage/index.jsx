@@ -18,9 +18,9 @@ const SearchPage = () => {
               <Link className={styles.link}>R&B/soul</Link>
               <form>
                 <select name="Beats">
-                  <options value="A">A</options>
-                  <options value="B">B</options>
-                  <options value="C">C</options>
+                  <option value="Filter">Filter</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
                 </select>
               </form>
             </div>
