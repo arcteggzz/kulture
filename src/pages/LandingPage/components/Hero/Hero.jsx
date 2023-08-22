@@ -1,6 +1,6 @@
 import styles from "./Hero.module.scss";
-import hero_bg from "./images/hero_bg.png";
-import searchIcon from "./images/search-icon.png";
+import hero_bg from "../images/hero_bg.png";
+import searchIcon from "../images/search-icon.png";
 
 const Hero = () => {
   return (
