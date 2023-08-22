@@ -58,10 +58,13 @@
       background-color: transparent;
     }
 
-    .link {
+    .forgotLink {
       color: #0077dc;
       text-decoration: none;
       font-size: 20px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
     .signIn_btn {
       margin-top: 15px;

@@ -3,12 +3,18 @@ import cancel from "./image/cancel.png";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeLoginModal } from "../../redux/features/loginModal/loginModalSlice";
+import { openForgotPasswordModal } from "../../redux/features/forgotPasswordModal/forgotPasswordModalSlice";
 
 export default function LoginModal() {
   const dispatch = useDispatch();
 
   const closeLoginModalHandler = () => {
     dispatch(closeLoginModal());
+  };
+  
+  const openForgotPasswordModalHandler = () => {
+    dispatch(closeLoginModal());
+    dispatch(openForgotPasswordModal());
   };
 
   return (
@@ -38,7 +44,12 @@ export default function LoginModal() {
             <input type="password" id="password" name="password" />
           </div>
 
-          <Link className={styles.link}>Forgot password</Link>
+          <button
+            onClick={() => openForgotPasswordModalHandler()}
+            className={styles.forgotLink}
+            type="button">
+            Forgot password
+          </button>
 
           <div>
             <button className={styles.signIn_btn}>Signin</button>

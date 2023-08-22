@@ -9,10 +9,10 @@ import {
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectloginModalIsOpen } from "../../redux/features/loginModal/loginModalSlice";
+import { selectForgotPasswordModalIsOpen } from "../../redux/features/forgotPasswordModal/forgotPasswordModalSlice";
 
 export default function GeneralPageLayout() {
-  const forgotPasswordModalOpen = false;
-
+  const forgotPasswordModalOpen = useSelector(selectForgotPasswordModalIsOpen);
   const loginModalIsOpen = useSelector(selectloginModalIsOpen);
 
   useEffect(() => {
@@ -52,18 +52,18 @@ export default function GeneralPageLayout() {
             loginModalIsOpen
               ? styles.modal_container_open
               : styles.modal_container_closed
-          }
-        >
+          }>
           <LoginModal />
         </div>
 
-        {forgotPasswordModalOpen ? (
-          <div className={styles.modal_container}>
-            <ForgotPasswordModal />
-          </div>
-        ) : (
-          <></>
-        )}
+        <div
+          className={
+            forgotPasswordModalOpen
+              ? styles.modal_container_open
+              : styles.modal_container_closed
+          }>
+          <ForgotPasswordModal />
+        </div>
       </div>
     </>
   );
