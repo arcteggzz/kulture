@@ -8,14 +8,18 @@ import arrow from "./images/arrow-right.png";
 import { Link, useLocation } from "react-router-dom";
 import { routePaths } from "../../utils";
 import searchIcon from "./images/search-icon.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal } from "../../redux/features/loginModal/loginModalSlice";
+import { selectCurrentAccessToken, selectCurrentUserFirstName } from "../../redux/features/auth/authSlice";
 
 export default function Navbar() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
-  const login = true;
+  const currentUser = useSelector(selectCurrentUserFirstName);
+  const currentToken = useSelector(selectCurrentAccessToken);
+
+  const login = currentToken;
 
   const openLoginModalHandler = () => {
     dispatch(openLoginModal());
@@ -56,7 +60,7 @@ export default function Navbar() {
               <img src={upload} alt="" />
               <Link className={styles.link}>Upload</Link>
             </div>
-            {login ? (
+            {!login ? (
               <div className={styles.signContainer}>
                 <button
                   onClick={() => openLoginModalHandler()}
@@ -76,10 +80,11 @@ export default function Navbar() {
                   alt="Profile Image"
                   className={styles.profileImage}
                 />
-                <p>Hi, Miriam</p>
+                <p>Hi, {currentUser}</p>
                 <img src={arrow} alt="Profile Image" />
               </div>
             )}
+            
           </div>
         </div>
       </nav>

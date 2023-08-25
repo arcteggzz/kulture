@@ -3,6 +3,7 @@ import styles from "./ForgotPasswordModal.module.scss";
 import cancel from "./image/cancel.png";
 import { Link } from "react-router-dom";
 import { closeForgotPasswordModal } from "../../redux/features/forgotPasswordModal/forgotPasswordModalSlice";
+import { routePaths } from "../../utils";
 
 export default function ForgotPasswordModal() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export default function ForgotPasswordModal() {
         <p>
           {" "}
           Enter details to change password or
-          <Link className={styles.link}> signup</Link>
+          <Link className={styles.link} to={routePaths.SIGNUPPAGE}> signup</Link>
         </p>
         <form>
           <div>

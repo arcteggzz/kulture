@@ -5,7 +5,7 @@ const UserProfilePage = () => {
   return (
     <>
       <AnimatedFadeInPage>
-        <main className={styles.UserProfilePage}>UserProfilePage</main>
+        <main className={styles.UserProfilePage}>UserProfilePage...</main>
       </AnimatedFadeInPage>
     </>
   );

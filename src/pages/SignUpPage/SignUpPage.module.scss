@@ -33,7 +33,13 @@
     .container {
       width: 70%;
       margin: 5% auto 0;
-
+      .errorText{
+        margin-bottom: 10px;
+        font-size: 13px;        
+      }
+      .errorText{
+        color: red;
+      }
       .dflex {
         display: grid;
         grid-template-columns: auto auto;
@@ -60,6 +66,37 @@
       input[type="text"]:focus {
         outline: none;
         background-color: transparent;
+      }
+
+      .userType{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 5%;
+        width: 50%;
+        margin: auto;
+        .active{
+        padding: 40px;
+        background-color: #6600e8;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .inactive{
+        padding: 40px;
+        background-color: #391568;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        opacity: 0.5;
+        cursor: pointer;
+        }
       }
       
       .checkbox_container {

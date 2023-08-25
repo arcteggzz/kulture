@@ -7,7 +7,7 @@ const Feeds = () => {
   return (
     <>
       <section className={styles.Feeds}>
-        <h2>Feed</h2>
+        <h2 className={styles.feed}>Feed</h2>
         <div className={styles.feedFlex}>
           <div>
             <div className={styles.trends}>
