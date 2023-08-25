@@ -95,15 +95,17 @@
           border: 2px solid #6600e8;
         }
 
-        border: none;
-
+        
         .signin {
+          border: none;
+          background-color: transparent;
           border-radius: 8px;
           padding: 14px 20px;
           color: white;
           text-decoration: none;
           margin-left: 10px;
           margin-right: 10px;
+          font-size: 16px;
         }
 
         .signin:hover {
