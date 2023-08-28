@@ -32,13 +32,18 @@
       height: 126px;
       border-radius: 10px;
     }
-    .buyBtn {
+    .buyBtn, .editBtn {
       background-color: #6600e8;
       padding: 16px 32px;
       border: none;
       cursor: pointer;
       border-radius: 8px;
       color: white;
+    }
+    .deleteBtn{
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
     div {
       p {

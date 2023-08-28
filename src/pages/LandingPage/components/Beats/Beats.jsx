@@ -3,6 +3,7 @@ import profileImage from "../images/profileImage.png";
 import beatImg from "../images/beatImg.png";
 import heart from "../images/Heart.png";
 import share from "../images/share.png";
+import deleteButton from "../images/deleteButton.png";
 
 const Beats = () => {
   return (
@@ -20,15 +21,19 @@ const Beats = () => {
         </div>
         <div className={styles.beatDetails}>
           <img src={beatImg} alt="Beat" className={styles.beatImg} />
-            <div>
-              <h2>Wintspread cabasky</h2>
-              <p>beat by Mariam @ohuly </p>
-              <p> released on 23 November 2022</p>
-              <div className={styles.price}>
-                <p>NGN 70,000</p>
-                <button className={styles.buyBtn}>BUY NOW</button>
-              </div>
+          <div>
+            <h2>Wintspread cabasky</h2>
+            <p>beat by Mariam @ohuly </p>
+            <p> released on 23 November 2022</p>
+            <div className={styles.price}>
+              <p>NGN 70,000</p>
+              <button className={styles.buyBtn}>BUY NOW</button>
+              {/* <button type="button" className={styles.editBtn}>Edit</button>
+                <button type="button" className={styles.deleteBtn}>
+                  <img src={deleteButton} alt="" />
+                </button> */}
             </div>
+          </div>
         </div>
         <div className={styles.shareSave}>
           <div className={styles.btnFlexx}>
