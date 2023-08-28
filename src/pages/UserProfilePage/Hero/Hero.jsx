@@ -1,4 +1,5 @@
 import styles from "./Hero.module.scss";
+import { useState } from "react";
 import backgroundImage from "../images/hero.png";
 import profileImage from "../images/profileImage.png";
 import uploadImage from "../images/camera.png";
@@ -7,30 +8,61 @@ import facebook from "../images/facebook.png";
 import instagram from "../images/instagram.png";
 import location from "../images/location.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import {
+  selectCurrentUserFirstName,
+  selectCurrentUserType,
+  selectCurrentUserLastName,
+  selectCurrentUserName,
+  selectCurrentUserImage,
+} from "../../../redux/features/auth/authSlice";
+import { routePaths } from "../../../utils/";
 
 const Hero = () => {
+  const currentUserFirstName = useSelector(selectCurrentUserFirstName);
+  const currentUserLastName = useSelector(selectCurrentUserLastName);
+  const currentUsername = useSelector(selectCurrentUserName);
+  const currentUserType = useSelector(selectCurrentUserType);
+  const currentUserImage = useSelector(selectCurrentUserImage);
+
+  const [imageSrc, setImageSrc] = useState(currentUserImage);
+
+  const handleImageError = () => {
+    setImageSrc(profileImage); // Replace with your actual dummy image path
+  };
+
   return (
     <div className={styles.Hero}>
       <div className={styles.backgroundImage}>
         <img src={backgroundImage} alt="" className={styles.bgImage} />
       </div>
       <div className={styles.profile}>
-        <img src={profileImage} alt="" />
+        <img
+          src={imageSrc ? imageSrc : profileImage}
+          alt=""
+          onError={handleImageError}
+        />
         <div>
-          <p className={styles.name}>Banny Anderson</p>
-          <p className={styles.harshTag}>@igbago</p>
-          <button type="button" className={styles.uploadBtn}>
+          <p
+            className={styles.name}
+          >{`${currentUserFirstName} ${currentUserLastName}`}</p>
+          <p className={styles.harshTag}>{`@${currentUsername}`}</p>
+          <Link
+            type="button"
+            className={styles.uploadBtn}
+            to={routePaths.UPLOADPAGE}
+          >
             UPLOAD BEAT
-          </button>
+          </Link>
         </div>
       </div>
       <div className={styles.uploadBtnContainer}>
         <div className={styles.upload_btn_wrapper}>
           <button className={styles.uploadFileBtn}>
             <img src={uploadImage} alt="" className={styles.uploadImg} />
-            <p>Upload image</p>
+            <p>{currentUserType === "producer" ? "Producer" : "Artiste"}</p>
           </button>
-          <input type="file" name="myfile" />
+          {/* <input type="file" name="myfile" /> */}
         </div>
       </div>
 
@@ -50,9 +82,15 @@ const Hero = () => {
             <img src={location} alt="" />
             <p className={styles.location}>Lagos, Nigeria</p>
           </div>
-          <Link><img src={dribbble} alt="" /></Link>
-          <Link><img src={facebook} alt="" /></Link>
-          <Link><img src={instagram} alt="" /></Link>
+          <Link>
+            <img src={dribbble} alt="" />
+          </Link>
+          <Link>
+            <img src={facebook} alt="" />
+          </Link>
+          <Link>
+            <img src={instagram} alt="" />
+          </Link>
           <Link className={styles.edit}>Edit</Link>
         </div>
       </div>

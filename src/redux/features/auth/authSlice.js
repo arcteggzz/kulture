@@ -8,7 +8,7 @@ const initialState = {
   userEmail: null,
   firstName: null,
   lastName: null,
-  userType: null,
+  userType: "artiste",
 };
 
 const authSlice = createSlice({
@@ -59,4 +59,3 @@ export const selectCurrentUserEmail = (state) => state.auth.userEmail;
 export const selectCurrentUserFirstName = (state) => state.auth.firstName;
 export const selectCurrentUserLastName = (state) => state.auth.lastName;
 export const selectCurrentUserType = (state) => state.auth.userType;
-

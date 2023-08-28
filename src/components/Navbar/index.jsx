@@ -3,6 +3,7 @@ import kulture_logo from "./images/kulture_logo.png";
 import Home from "./images/home.png";
 import upload from "./images/upload.png";
 import cart from "./images/shopping-cart.png";
+import profile from "./images/profile-circle.png";
 import profileImage from "./images/profileImage.png";
 import arrow from "./images/arrow-right.png";
 import { Link, useLocation } from "react-router-dom";
@@ -10,7 +11,10 @@ import { routePaths } from "../../utils";
 import searchIcon from "./images/search-icon.png";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal } from "../../redux/features/loginModal/loginModalSlice";
-import { selectCurrentAccessToken, selectCurrentUserFirstName } from "../../redux/features/auth/authSlice";
+import {
+  selectCurrentAccessToken,
+  selectCurrentUserFirstName,
+} from "../../redux/features/auth/authSlice";
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -50,15 +54,27 @@ export default function Navbar() {
           <div className={styles.links}>
             <div className={styles.linkBtn}>
               <img src={Home} alt="" />
-              <Link className={styles.link}>Home</Link>
+              <Link className={styles.link} to={routePaths.LANDINGPAGE}>
+                Home
+              </Link>
             </div>
             <div className={styles.linkBtn}>
               <img src={cart} alt="" />
-              <Link className={styles.link}>Cart</Link>
+              <Link className={styles.link} to={routePaths.CARTPAGE}>
+                Cart
+              </Link>
             </div>
             <div className={styles.linkBtn}>
               <img src={upload} alt="" />
-              <Link className={styles.link}>Upload</Link>
+              <Link className={styles.link} to={routePaths.UPLOADPAGE}>
+                Upload
+              </Link>
+            </div>
+            <div className={styles.linkBtn}>
+              <img src={profile} alt="" />
+              <Link className={styles.link} to={routePaths.USERPROFILEPAGE}>
+                Profile
+              </Link>
             </div>
             {!login ? (
               <div className={styles.signContainer}>
@@ -84,7 +100,6 @@ export default function Navbar() {
                 <img src={arrow} alt="Profile Image" />
               </div>
             )}
-            
           </div>
         </div>
       </nav>

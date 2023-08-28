@@ -18,7 +18,8 @@ export default function LoginModal() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || routePaths.USERPROFILEPAGE;
+  const from =
+    location.state?.from?.pathname || routePaths.USERPROFILEPAGEROUTES.OVERVIEW;
   const [accountLoginLoading, setAccountLoginLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -141,7 +142,8 @@ export default function LoginModal() {
           <button
             onClick={() => openForgotPasswordModalHandler()}
             className={styles.forgotLink}
-            type="button">
+            type="button"
+          >
             Forgot password
           </button>
 

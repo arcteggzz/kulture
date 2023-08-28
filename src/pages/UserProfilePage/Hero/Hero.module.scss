@@ -38,7 +38,7 @@
         font-weight: 600;
         letter-spacing: 0.21px;
         padding: 16px 24px;
-        width: 120px;
+        // min-width: 120px;
         font-size: 12px;
         margin-bottom: 27px;
       }
@@ -104,9 +104,9 @@
       width: 80%;
       padding-right: 20px;
     }
-    .edit{
+    .edit {
       text-decoration: none;
-      color: #0077DC;
+      color: #0077dc;
     }
 
     .links {

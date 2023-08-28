@@ -1,7 +1,9 @@
 @use "../../assets/styles/" as *;
 
 .UserProfilePage {
-  .feeds{
+  min-height: 200vh;
+
+  .feeds {
     width: 1090px;
     margin: auto;
   }
