@@ -8,7 +8,7 @@ const initialState = {
   userEmail: null,
   firstName: null,
   lastName: null,
-  userType: "artiste",
+  userType: "producer",
 };
 
 const authSlice = createSlice({
