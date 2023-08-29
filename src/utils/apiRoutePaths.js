@@ -6,6 +6,9 @@ const apiRoutePaths = {
     login: "/signin",
     logout: "/auth/logout",
   },
+  trendingBeats: "/trending/beats",
+  trendingProducers: "/trending/producers"
+
 };
 
 export default apiRoutePaths;
