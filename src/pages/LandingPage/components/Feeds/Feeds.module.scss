@@ -11,22 +11,7 @@
     grid-template-columns: 40% auto;
     margin-top: 25px;
     gap: 20px;
-    .trends {
-      background-color: #1b1b1b;
-      border-radius: 10px;
-      padding: 10px;
-      margin-bottom: 25px;
-      h3 {
-        margin-top: 14px;
-        font-weight: 400;
-        margin-bottom: 30px;
-      }
-      p {
-        font-size: 20px;
-        margin-bottom: 35px;
-        color: #e2e2e2;
-      }
-    }
+
     .producers {
       background-color: #1b1b1b;
       border-radius: 10px;
@@ -51,7 +36,7 @@
     div {
       .dFlex {
         display: flex;
-        justify-content:space-between;
+        justify-content: space-between;
         background-color: black;
         margin-bottom: 5px;
         .filter {
@@ -78,5 +63,7 @@
         }
       }
     }
+  }
+  @include sm() {
   }
 }
