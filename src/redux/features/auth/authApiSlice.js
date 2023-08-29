@@ -1,5 +1,5 @@
 import { apiSlice } from "../../app/api/apiSlice";
-import { apiRoutePaths } from "../../../utils/apiRoutePaths";
+import apiRoutePaths from "../../../utils/apiRoutePaths";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

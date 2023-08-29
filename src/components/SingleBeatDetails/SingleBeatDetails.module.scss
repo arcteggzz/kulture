@@ -1,0 +1,138 @@
+@use "../../assets/styles/" as *;
+
+.SingleBeatDetails {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-radius: 8px;
+  background: #1b1b1b;
+  column-gap: 18px;
+  max-width: 880px;
+  width: 100%;
+
+  .beat_image {
+    width: 140px;
+    height: 140px;
+    border-radius: 8px;
+  }
+
+  .right_side {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    .right_side_primary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: 72px;
+
+      .right_side_primary_text {
+        display: flex;
+        column-gap: 14px;
+
+        .beat_name_text {
+          color: #fff;
+          font-size: 24px;
+          font-weight: 600;
+          line-height: normal;
+          letter-spacing: 0.036px;
+        }
+
+        .beat_id_text {
+          color: #434343;
+          font-size: 12px;
+          font-weight: 600;
+          padding: 5px 4px 0 4px;
+          border-radius: 8px;
+          background: #ddc8f9;
+          vertical-align: middle;
+        }
+      }
+
+      .beat_cost_text {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.036px;
+      }
+    }
+
+    .right_side_secondary {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+
+      .tertiary_text {
+        color: #505050;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.28px;
+      }
+    }
+
+    // .right_side_tetiary{
+
+    // }
+
+    .right_side_footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .beat_date_text {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.03px;
+      }
+
+      .button_container {
+        display: flex;
+        align-items: center;
+        column-gap: 24px;
+      }
+    }
+  }
+}
+
+.secondary_text {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.primary_button,
+.delete_button {
+  border-radius: 8px;
+  padding: 16px 32px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.28px;
+  cursor: pointer;
+  transition: all ease 0.5s;
+  border: none;
+}
+
+.primary_button {
+  background: #6600e8;
+}
+
+.primary_button:hover {
+  background: #7d1ff7;
+}
+
+.delete_button {
+  background: #eb5757;
+}
+
+.delete_button:hover {
+  background: #ff0000;
+}

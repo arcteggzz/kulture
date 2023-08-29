@@ -5,7 +5,7 @@ This is the main application for the public domain for KULTURE
 ## WEBSITE URL
 
 Netlify:- https://zojatech-kulture.netlify.app
-Vercel:- https://kulture-inky.vercel.app
+Vercel:- https://kulture-lac.vercel.app/
 
 ## FIGMA DESIGN FILE
 

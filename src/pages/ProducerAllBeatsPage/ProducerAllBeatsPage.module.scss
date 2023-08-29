@@ -1,0 +1,14 @@
+@use "../../assets/styles/" as *;
+
+.ProducerAllBeatsPage {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  row-gap: 24px;
+  width: 100%;
+  padding: 40px 0;
+
+  @include sm() {
+  }
+}

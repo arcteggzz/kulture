@@ -2,12 +2,149 @@
 
 .UploadPage {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
-  padding: 0 pixRem(100) 100px pixRem(100);
-  // height: 80vh;
+  padding: 100px 180px;
 
-  @include sm() {
+  .form_one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    row-gap: 40px;
+
+    h2 {
+      color: #fff;
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.09px;
+    }
+
+    .licnese_options {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 90px;
+
+      .licnese_option_active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 32px;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 16px 48px 32px 48px;
+        background: #1b1b1b;
+        border: 2px solid #6600e8;
+      }
+
+      .licnese_option_inactive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 32px;
+        cursor: pointer;
+        border-radius: 10px;
+        background: #1b1b1b;
+        padding: 16px 50px;
+      }
+    }
   }
+
+  .form_two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    row-gap: 40px;
+
+    h2 {
+      color: #fff;
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.09px;
+    }
+
+    .input_container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      .main_input_container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        .file_input {
+          width: 640px;
+          height: 320px;
+          cursor: pointer;
+          opacity: 0;
+        }
+      }
+    }
+
+    .button_container {
+      display: flex;
+      column-gap: 24px;
+    }
+  }
+}
+
+.license_text {
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.036px;
+}
+
+.form_button {
+  border-radius: 10px;
+  background: #6600e8;
+  padding: 10px 36px;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.036px;
+  border: none;
+  cursor: pointer;
+  transition: all ease 0.5s;
+}
+
+.form_button:hover {
+  background: #a262f6;
+}
+
+.back_button {
+  border-radius: 10px;
+  background: none;
+  padding: 10px 36px;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.036px;
+  border: 1px solid #6600e8;
+  cursor: pointer;
+  transition: all ease 0.5s;
+}
+
+.back_button:hover {
+  background: #6600e8;
 }

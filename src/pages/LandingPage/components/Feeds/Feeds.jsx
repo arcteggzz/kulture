@@ -1,57 +1,18 @@
-import popularProducer from "../images/profileImage.png";
 import Beats from "../Beats/Beats.jsx";
 import styles from "./Feeds.module.scss";
 import { Link } from "react-router-dom";
+import TrendingCategories from "./TrandingCategory/TrendingCategories";
+import TrendingProducers from "./TrandingProducers/TrendingProducers.jsx";
 
 const Feeds = () => {
   return (
     <>
       <section className={styles.Feeds}>
-        <h2>Feed</h2>
+        <h2 className={styles.feed}>Feed</h2>
         <div className={styles.feedFlex}>
           <div>
-            <div className={styles.trends}>
-              <h3>Trending Search</h3>
-              <p>Mariam</p>
-              <p>Winifred</p>
-              <p>Winifred</p>
-              <p>Winifred</p>
-            </div>
-            <div className={styles.producers}>
-              <h3>Popular producers</h3>
-              <div className={styles.popularProducer}>
-                <img
-                  src={popularProducer}
-                  alt=""
-                  className={styles.profileImage}
-                />
-                <p>Mariam</p>
-              </div>
-              <div className={styles.popularProducer}>
-                <img
-                  src={popularProducer}
-                  alt=""
-                  className={styles.profileImage}
-                />
-                <p>Mariam</p>
-              </div>
-              <div className={styles.popularProducer}>
-                <img
-                  src={popularProducer}
-                  alt=""
-                  className={styles.profileImage}
-                />
-                <p>Mariam</p>
-              </div>
-              <div className={styles.popularProducer}>
-                <img
-                  src={popularProducer}
-                  alt=""
-                  className={styles.profileImage}
-                />
-                <p>Mariam</p>
-              </div>
-            </div>
+            <TrendingCategories />
+            <TrendingProducers />
           </div>
 
           <div>
@@ -64,9 +25,9 @@ const Feeds = () => {
               </div>
               <form>
                 <select name="Beats">
-                  <options value="A">A</options>
-                  <options value="B">B</options>
-                  <options value="C">C</options>
+                  <option value="Filter">Filter</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
                 </select>
               </form>
             </div>

@@ -18,6 +18,12 @@ import {
   SearchPage,
   LoginCatchPage,
   UserProfilePage,
+  CartPage,
+  ArtistAllBeatsPage,
+  ArtistFavoriteBeatsPage,
+  ProducerAllBeatsPage,
+  ProducerTopBeatsPage,
+  OverviewPage,
 } from "./pages";
 
 //lazyLoading for pages
@@ -55,6 +61,30 @@ const App = () => {
                 path={`${routePaths.USERPROFILEPAGE}`}
                 element={<UserProfilePage />}
               />
+              <Route path={`${routePaths.CARTPAGE}`} element={<CartPage />} />
+
+              <Route element={<UserProfilePage />}>
+                <Route
+                  path={`${routePaths.USERPROFILEPAGEROUTES.OVERVIEW}`}
+                  element={<OverviewPage />}
+                />
+                <Route
+                  path={`${routePaths.USERPROFILEPAGEROUTES.ARTISTE.PURCHASED_BEATS}`}
+                  element={<ArtistAllBeatsPage />}
+                />
+                <Route
+                  path={`${routePaths.USERPROFILEPAGEROUTES.ARTISTE.FAVORITES}`}
+                  element={<ArtistFavoriteBeatsPage />}
+                />
+                <Route
+                  path={`${routePaths.USERPROFILEPAGEROUTES.PRODUCER.ALL_BEATS_PRODUCED}`}
+                  element={<ProducerAllBeatsPage />}
+                />
+                <Route
+                  path={`${routePaths.USERPROFILEPAGEROUTES.PRODUCER.TOP_BEATS}`}
+                  element={<ProducerTopBeatsPage />}
+                />
+              </Route>
             </Route>
           </Route>
         </Routes>

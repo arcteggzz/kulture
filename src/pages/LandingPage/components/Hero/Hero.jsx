@@ -1,6 +1,8 @@
 import styles from "./Hero.module.scss";
-import hero_bg from "./images/hero_bg.png";
-import searchIcon from "./images/search-icon.png";
+import hero_bg from "../images/hero_bg.png";
+import searchIcon from "../images/search-icon.png";
+import { routePaths } from "../../../../utils";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -18,9 +20,9 @@ const Hero = () => {
       <div className={styles.searchBtn}>
         <div>
           <input className={styles.find} placeholder="Find trending beats" />
-          <button className={styles.searchIcon}>
+          <Link className={styles.searchIcon} to={routePaths.SEARCHPAGE}>
             <img src={searchIcon} />
-          </button>
+          </Link>
         </div>
         <button className={styles.uploadBtn}>UPLOAD YOUR BEAT</button>
       </div>

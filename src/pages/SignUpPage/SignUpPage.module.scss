@@ -1,12 +1,136 @@
 @use "../../assets/styles/" as *;
 
 .SignUpPage {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 pixRem(100) 100px pixRem(100);
-  // height: 80vh;
+  .postion {
+    .background_image {
+      background-image: linear-gradient(to right, #f327a1, #6600e8);
+      mix-blend-mode: color;
+      filter: blur(38px);
+      position: relative;
+      height: 198px;
+    }
+
+    .logoContainer {
+      position: absolute;
+      top: 10%;
+      text-align: center;
+      margin-top: 50px;
+      color: white;
+      width: 100%;
+      margin: auto;
+
+      h1 {
+        margin-top: 20px;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 0.048px;
+      }
+    }
+  }
+  .signUpPage_content {
+    width: 80%;
+    margin: auto;
+    .container {
+      width: 70%;
+      margin: 5% auto 0;
+      .errorText{
+        margin-bottom: 10px;
+        font-size: 13px;        
+      }
+      .errorText{
+        color: red;
+      }
+      .dflex {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 15px;
+      }
+      .label {
+        margin-bottom: 10px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        resize: vertical;
+        background-color: transparent;
+        margin-bottom: 25px;
+        color: white;
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus,
+      input[type="text"]:focus {
+        outline: none;
+        background-color: transparent;
+      }
+
+      .userType{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 5%;
+        width: 50%;
+        margin: auto;
+        .active{
+        padding: 40px;
+        background-color: #6600e8;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .inactive{
+        padding: 40px;
+        background-color: #391568;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        opacity: 0.5;
+        cursor: pointer;
+        }
+      }
+      
+      .checkbox_container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        input[type="checkbox"] {
+          margin-right: 20px;
+          cursor: pointer;
+          width: 20px;
+          height: 25px;
+        }
+        .link {
+          color: #3011ec;
+          font-weight: 600;
+          text-underline-offset: 5px;
+          text-decoration-thickness: 2px;
+        }
+      }
+
+      .signUp_btn {
+        margin-top: 15px;
+        width: 100%;
+        padding: 12px;
+        background-color: #6600e8;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 30px;
+        cursor: pointer;
+      }
+    }
+  }
 
   @include sm() {
   }

@@ -3,11 +3,11 @@ import profileImage from "../images/profileImage.png";
 import beatImg from "../images/beatImg.png";
 import heart from "../images/Heart.png";
 import share from "../images/share.png";
+import deleteButton from "../images/deleteButton.png";
 
 const Beats = () => {
   return (
     <>
-      
       <div className={styles.beats}>
         <div className={styles.beatProfile}>
           <img
@@ -28,21 +28,24 @@ const Beats = () => {
             <div className={styles.price}>
               <p>NGN 70,000</p>
               <button className={styles.buyBtn}>BUY NOW</button>
+              {/* <button type="button" className={styles.editBtn}>Edit</button>
+                <button type="button" className={styles.deleteBtn}>
+                  <img src={deleteButton} alt="" />
+                </button> */}
             </div>
           </div>
         </div>
         <div className={styles.shareSave}>
           <div className={styles.btnFlexx}>
-            <img src={share}/>
+            <img src={share} />
             <button className={styles.shareBtn}>Share</button>
           </div>
           <div className={styles.btnFlex}>
-            <img src={heart}/>
+            <img src={heart} />
             <button className={styles.saveBtn}>Save for later</button>
           </div>
         </div>
       </div>
-
     </>
   );
 };

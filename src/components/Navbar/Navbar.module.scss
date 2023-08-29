@@ -4,8 +4,7 @@
   width: 80%;
   margin: auto;
   height: 100px;
-  background-image: url(./image/Hero.png);
-  background-size: cover;
+  background-color: black;
   padding-top: 20px;
 
   .dFlex {
@@ -80,6 +79,7 @@
       }
       .signContainer {
         display: flex;
+
         .signup {
           border: 2px solid white;
           border-radius: 8px;
@@ -89,18 +89,25 @@
           margin-left: 10px;
           margin-right: 10px;
         }
+
         .signup:hover {
           background-color: #6600e8;
           border: 2px solid #6600e8;
         }
+
+        
         .signin {
+          border: none;
+          background-color: transparent;
           border-radius: 8px;
           padding: 14px 20px;
           color: white;
           text-decoration: none;
           margin-left: 10px;
           margin-right: 10px;
+          font-size: 16px;
         }
+
         .signin:hover {
           background-color: #6600e8;
         }
@@ -124,7 +131,6 @@
           font-size: 18px;
         }
       }
-     
     }
   }
 

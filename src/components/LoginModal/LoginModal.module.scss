@@ -1,7 +1,93 @@
 @use "../../assets/styles/" as *;
 
-.Navbar {
-  display: flex;
+.LoginModal {
+  background-color: black;
+  width: 39%;
+  margin: 7% auto;
+  color: white;
+  border-radius: 10px;
+
+  .dflex {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+
+    button {
+      border: none;
+      background: none;
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+
+  p {
+    padding: 0 30px;
+    font-size: 20px;
+
+    .link {
+      color: #0077dc;
+      text-decoration: none;
+    }
+  }
+
+  .signIn_form {
+    padding: 0 30px;
+    margin-top: 25px;
+    .errorText{
+      margin: 0;
+      padding: 0;
+      margin-bottom: 10px;
+      font-size: 13px;   
+      color: red;     
+    }
+    .label {
+      margin-bottom: 15px;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid rgb(55, 55, 55);
+      border-radius: 10px;
+      resize: vertical;
+      background-color: transparent;
+      margin-bottom: 25px;
+      color: white;
+      font-size: 16px;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="text"]:focus {
+      outline: none;
+      background-color: transparent;
+    }
+
+    
+
+    .forgotLink {
+      color: #0077dc;
+      text-decoration: none;
+      font-size: 20px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .signIn_btn {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      background-color: #6600e8;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      font-size: 20px;
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+  }
 
   @include sm() {
   }
