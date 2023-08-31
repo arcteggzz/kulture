@@ -6,6 +6,7 @@ const apiRoutePaths = {
     login: "/signin",
     logout: "/auth/logout",
   },
+  beats: "/beats",
   trendingBeats: "/trending/beats",
   trendingProducers: "/trending/producers"
 
