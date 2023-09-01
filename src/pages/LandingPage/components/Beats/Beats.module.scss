@@ -32,7 +32,8 @@
       height: 126px;
       border-radius: 10px;
     }
-    .buyBtn, .editBtn {
+    .buyBtn,
+    .editBtn {
       background-color: #6600e8;
       padding: 16px 32px;
       border: none;
@@ -40,7 +41,7 @@
       border-radius: 8px;
       color: white;
     }
-    .deleteBtn{
+    .deleteBtn {
       background-color: transparent;
       border: none;
       cursor: pointer;
@@ -86,4 +87,94 @@
       color: #e2e2e2;
     }
   }
+
+  .audio_container {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // width: 20px;
+    // color: #1b1b1b;
+    // background-color: transparent;
+  }
+
+  .custom_audio {
+    width: 109.49px;
+      height: 126px;
+      border-radius: 10px;
+  }
+
+  .custom_audio::-webkit-media-controls-play-button {
+    transform: scale(4,2);
+    border-radius: 50%;
+    background-color: red;
+  }
+  .custom_audio::-webkit-media-controls-mute-button {
+    display: none;
+  }
+  .custom_audio::-webkit-media-controls-current-time-display {
+    display: none;
+  }
+  .custom_audio::-webkit-media-controls-timeline {
+    display: none;
+  }
+  .custom_audio::-webkit-media-controls-realtime-button {
+    display: none;
+  }
+  .custom_audio.custom_audio::-webkit-media-controls-time-remaining-display {
+    display: none;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .audio_container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+// }
+
+// .custom_audio {
+//   /* Custom styling for the audio controls */
+//   appearance: none;
+//   width: 100%;
+//   max-width: 400px;
+//   background-color: #f2f2f2;
+//   border: none;
+//   padding: 10px;
+//   border-radius: 5px;
+//   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+// }
+
+// .custom_audio::-webkit-media-controls-panel {
+//   background-color: #f2f2f2;
+//   border-radius: 5px;
+//   padding: 10px;
+// }
+
+// .custom_audio::-webkit-media-controls-play-button {
+//   background-color: #d41212;
+// }
+
+// .custom_audio::-webkit-media-controls-volume-slider {
+//   background-color: #ddd;
+// }
+
+// .custom_audio::-webkit-media-controls-seek-back-button,
+// .custom_audio::-webkit-media-controls-seek-forward-button {
+//   color: #333;
+// }

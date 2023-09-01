@@ -11,7 +11,7 @@
   .uploads {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    div {
+    .uploadDetails {
       position: relative;
       margin: auto;
       .imgUpload {
@@ -23,7 +23,7 @@
         position: absolute;
         bottom: 10%;
         left: 10px;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 600;
         line-height: 30px;
         letter-spacing: 0.03px;
@@ -37,5 +37,9 @@
         }
       }
     }
+  }
+
+  .feedback{
+    text-align: center;
   }
 }
