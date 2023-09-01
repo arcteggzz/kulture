@@ -7,8 +7,7 @@ const apiRoutePaths = {
     logout: "/auth/logout",
   },
   trendingBeats: "/trending/beats",
-  trendingProducers: "/trending/producers"
-
+  trendingProducers: "/trending/producers",
 };
 
 export default apiRoutePaths;
