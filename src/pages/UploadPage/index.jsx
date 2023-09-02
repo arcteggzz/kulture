@@ -22,13 +22,14 @@ const UploadPage = () => {
   const [uploadError, setUploadError] = useState("");
   const [formStep, setFormStep] = useState(1);
 
-  const [licenseType, setLicenseType] = useState("premium");
+  const [licenseType, setLicenseType] = useState("Premium");
 
   const [audioFile, setAudioFile] = useState(null);
 
   const [audioName, setAudioName] = useState("");
   const [audioPrice, setAudioPrice] = useState("");
   const [audioGenre, setAudioGenre] = useState("");
+  const [availableCopies, setAvailableCopies] = useState(1);
 
   const handleAudioChange = (e) => {
     const selectedFile = e.target.files && e.target.files[0];
@@ -56,12 +57,13 @@ const UploadPage = () => {
     setAudioUploadLoading(true);
 
     const bodyFormData = new FormData();
-    bodyFormData.append("licenseType", licenseType);
-    bodyFormData.append("audio", audioFile);
     bodyFormData.append("name", audioName);
     bodyFormData.append("price", audioPrice);
     bodyFormData.append("genre", audioGenre);
-    bodyFormData.append("image", "");
+    bodyFormData.append("licenseType", licenseType);
+    bodyFormData.append("image", null);
+    bodyFormData.append("audio", audioFile);
+    bodyFormData.append("available_copies", availableCopies);
 
     const requestOptions = {
       method: "POST",
@@ -115,11 +117,11 @@ const UploadPage = () => {
                   <div className={styles.licnese_options}>
                     <div
                       className={
-                        licenseType === "premium"
+                        licenseType === "Premium"
                           ? styles.licnese_option_active
                           : styles.licnese_option_inactive
                       }
-                      onClick={() => setLicenseType("premium")}
+                      onClick={() => setLicenseType("Premium")}
                     >
                       <img src={premium_icon} alt="" />
                       <p className={styles.license_text}>Premium</p>
@@ -127,11 +129,11 @@ const UploadPage = () => {
                     </div>
                     <div
                       className={
-                        licenseType === "standard"
+                        licenseType === "Standard"
                           ? styles.licnese_option_active
                           : styles.licnese_option_inactive
                       }
-                      onClick={() => setLicenseType("standard")}
+                      onClick={() => setLicenseType("Standard")}
                     >
                       <img src={standard_icon} alt="" />
                       <p className={styles.license_text}>Standard</p>
@@ -233,8 +235,8 @@ const UploadPage = () => {
                           onChange={(e) => setAudioGenre(e.target.value)}
                         >
                           <option value="Choose genre">Choose genre</option>
-                          <option value="B">B</option>
-                          <option value="C">C</option>
+                          <option value="Hip Hop">Hip Hop</option>
+                          <option value="Afro Pop">Afro Pop</option>
                         </select>
                       </div>
                       <div>
@@ -246,6 +248,18 @@ const UploadPage = () => {
                           name="price"
                           value={audioPrice}
                           onChange={(e) => setAudioPrice(e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <div className={styles.label}>
+                          <label>Available Copies</label>
+                        </div>
+                        <input
+                          type="text"
+                          name="availableCopies"
+                          value={availableCopies}
+                          onChange={(e) => setAvailableCopies(+e.target.value)}
+                          disabled={licenseType === "Premium"}
                         />
                       </div>
                       <div className={styles.button_container}>
