@@ -12,6 +12,7 @@ import {
   selectCurrentUserType,
 } from "../../redux/features/auth/authSlice";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const UploadPage = () => {
   const currentUserAccessToken = useSelector(selectCurrentAccessToken);
@@ -56,41 +57,90 @@ const UploadPage = () => {
 
     setAudioUploadLoading(true);
 
+    console.log(audioGenre);
+
     const bodyFormData = new FormData();
     bodyFormData.append("name", audioName);
     bodyFormData.append("price", audioPrice);
     bodyFormData.append("genre", audioGenre);
-    bodyFormData.append("licenseType", licenseType);
-    bodyFormData.append("image", null);
-    bodyFormData.append("audio", audioFile);
+    bodyFormData.append("license_type", licenseType);
+    // bodyFormData.append("image", null);
+    // bodyFormData.append("audio", audioFile);
     bodyFormData.append("available_copies", availableCopies);
+    bodyFormData.append("audio", audioFile);
 
-    const requestOptions = {
-      method: "POST",
-      body: bodyFormData,
-      headers: {
-        Authorization: `Bearer ${currentUserAccessToken}`,
-      },
-    };
+    // const requestOptions = {
+    //   method: "POST",
+    //   body: bodyFormData,
+    //   headers: {
+    //     Authorization: `Bearer ${currentUserAccessToken}`,
+    //   },
+    // };
 
-    fetch(`pppp`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-        if (data.user) {
+    // fetch(
+    //   `https://kulture-api.onrender.com/api/v1/beats/upload`,
+    //   requestOptions
+    // )
+    //   .then((response) => {
+    //     console.log(response);
+    //     // response.json();
+    //     // console.log(`try:${response.message}`);
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.status) {
+    //       toast.success(`Beat uploaded successfully.`, {
+    //         autoClose: 3200,
+    //       });
+    //       setAudioUploadLoading(false);
+    //       setTimeout(() => {
+    //         navigate("/login");
+    //       }, 3500);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setAudioUploadLoading(false);
+    //     setUploadError("No Server Response");
+    //     toast.error(`Beat uploaded failed.`, {
+    //       autoClose: 3200,
+    //     });
+    //   });
+
+    axios
+      .post(
+        "https://kulture-api.onrender.com/api/v1/beats/upload",
+        bodyFormData,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUserAccessToken}`,
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response from the server
+        if (response.status) {
+          console.log("Audio uploaded successfully");
           toast.success(`Beat uploaded successfully.`, {
             autoClose: 3200,
           });
           setAudioUploadLoading(false);
           setTimeout(() => {
-            navigate("/login");
+            navigate(
+              routePaths.USERPROFILEPAGEROUTES.PRODUCER.ALL_BEATS_PRODUCED
+            );
           }, 3500);
+        } else {
+          console.error("Audio upload failed");
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Network error", error);
         setAudioUploadLoading(false);
         setUploadError("No Server Response");
+        toast.error(`Beat uploaded failed.`, {
+          autoClose: 3200,
+        });
       });
   };
 
@@ -235,8 +285,11 @@ const UploadPage = () => {
                           onChange={(e) => setAudioGenre(e.target.value)}
                         >
                           <option value="Choose genre">Choose genre</option>
-                          <option value="Hip Hop">Hip Hop</option>
+                          <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
                           <option value="Afro Pop">Afro Pop</option>
+                          <option value="Afro Drill">Afro Drill</option>
+                          <option value="Fuji Fusion">Fuji Fusion</option>
+                          <option value="Afro Trap">Afro Trap</option>
                         </select>
                       </div>
                       <div>

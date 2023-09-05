@@ -24,6 +24,7 @@ import {
   ProducerAllBeatsPage,
   ProducerTopBeatsPage,
   OverviewPage,
+  BeatsOffersPage,
 } from "./pages";
 
 //lazyLoading for pages
@@ -50,6 +51,10 @@ const App = () => {
               element={<LandingPage />}
             />
             <Route path={`${routePaths.SEARCHPAGE}`} element={<SearchPage />} />
+            <Route
+              path={`${routePaths.BUYBEATSPAGE}`}
+              element={<BeatsOffersPage />}
+            />
 
             {/* private routes */}
             <Route element={<AuthenticatedPageLayout />}>

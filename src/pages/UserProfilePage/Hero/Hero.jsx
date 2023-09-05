@@ -1,7 +1,7 @@
 import styles from "./Hero.module.scss";
 import { useState } from "react";
 import backgroundImage from "../images/hero.png";
-import profileImage from "../images/profileImage.png";
+import profileImage from "../images/dummy_image_icon.jpg";
 import uploadImage from "../images/camera.png";
 import dribbble from "../images/dribbble.png";
 import facebook from "../images/facebook.png";
@@ -47,13 +47,16 @@ const Hero = () => {
             className={styles.name}
           >{`${currentUserFirstName} ${currentUserLastName}`}</p>
           <p className={styles.harshTag}>{`@${currentUsername}`}</p>
-          <Link
-            type="button"
-            className={styles.uploadBtn}
-            to={routePaths.UPLOADPAGE}
-          >
-            UPLOAD BEAT
-          </Link>
+
+          {currentUserType === "producer" ? (
+            <Link className={styles.uploadBtn} to={routePaths.UPLOADPAGE}>
+              UPLOAD BEAT
+            </Link>
+          ) : (
+            <Link className={styles.uploadBtn} to={routePaths.BUYBEATSPAGE}>
+              BUY BEATS
+            </Link>
+          )}
         </div>
       </div>
       <div className={styles.uploadBtnContainer}>
@@ -72,10 +75,8 @@ const Hero = () => {
           <Link className={styles.edit}>Edit</Link>
         </div>
         <p>
-          Ahmed is a 30 years old music Artist who is based in Lagos, Nigeria.He
-          wants checkout vocal samples and beats of producers for his musica nd
-          purchase them with ease. I would love to have a platform where i can
-          check sample of beats and vocals, purchase them with ease and get.
+          This is your user profile page. You can navigate to view your
+          overview, statistics, top beats and favorites.
         </p>
         <div className={styles.links}>
           <div className={styles.flexContent}>

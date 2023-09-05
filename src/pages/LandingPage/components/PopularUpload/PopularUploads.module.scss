@@ -1,13 +1,13 @@
 @use "../../../../assets/styles/" as *;
 
-.PopularUploads{
+.PopularUploads {
   width: 68%;
   margin: 40px auto 0;
-  h2{
+  h2 {
     margin-bottom: 20px;
-    margin-left:12px;
-  };
-  
+    margin-left: 12px;
+  }
+
   .uploads {
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -27,7 +27,7 @@
         font-weight: 600;
         line-height: 30px;
         letter-spacing: 0.03px;
-  
+
         span {
           font-size: 20px;
           font-style: normal;
@@ -39,7 +39,15 @@
     }
   }
 
-  .feedback{
+  .feedback {
     text-align: center;
   }
+}
+
+.LoadingIcon_container {
+  width: 50vw;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
