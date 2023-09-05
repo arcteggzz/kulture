@@ -1,21 +1,14 @@
 import styles from "./Beats.module.scss";
-import profileImage from "../images/profileImage.png";
+// import profileImage from "../images/profileImage.png";
 import beatImg from "../images/beatImg.png";
-import playButton from "../images/playBtn.png";
-import pauseButton from "../images/pause.png";
+// import playButton from "../images/playBtn.png";
+// import pauseButton from "../images/pause.png";
 import heart from "../images/Heart.png";
 import share from "../images/share.png";
-import deleteButton from "../images/deleteButton.png";
+// import deleteButton from "../images/deleteButton.png";
 import { useGetAllBeatsQuery } from "../../../../redux/features/beatsApiSlice/beatsApiSlice";
-import { useState } from "react";
 
 const Beats = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-  };
-
   const {
     data: allBeats,
     isLoading,

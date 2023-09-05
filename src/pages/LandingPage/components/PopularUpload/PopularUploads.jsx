@@ -16,15 +16,13 @@ const PopularUploads = () => {
   } else if (isSuccess) {
     trendingCategoryContent = (
       <>
-        {allTrendingCategories.data.data.map((trendingCategory, index) => {
-          console.log(trendingCategory.attributes);
+        {allTrendingCategories?.data?.data?.map((trendingCategory, index) => {
           return (
             <>
               <div className={styles.uploadDetails} key={`${trendingCategory.attributes.user_id}${index}`}>
                 <img
                   className={styles.imgUpload}
-                  // src={trendingCategory.attributes.image_url}
-                  src={trendingCategory.attributes.image_url }
+                  src={trendingCategory.attributes.image_url ? trendingCategory.attributes.image_url : image}
                   alt="uploaded Image"
                 />
                 <p
