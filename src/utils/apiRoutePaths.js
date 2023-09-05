@@ -7,8 +7,16 @@ const apiRoutePaths = {
     logout: "/auth/logout",
   },
   beats: "/beats",
+  producers: "/producers",
+  artistes: "/artistes",
+  artistesDetails: (artistesId) => {
+    return `/artistes/${artistesId}`;
+  },
   trendingBeats: "/trending/beats",
   trendingProducers: "/trending/producers",
+  producersDetails: (producerId) => {
+    return `/producers/${producerId}`;
+  },
 };
 
 export default apiRoutePaths;

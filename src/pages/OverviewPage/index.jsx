@@ -1,9 +1,12 @@
 import styles from "./OverviewPage.module.scss";
+import Stats from "./Stats/Stats";
 
 const OverviewPage = () => {
   return (
     <>
-      <section className={styles.CartPage}>OverviewPage</section>
+      <section className={styles.CartPage}>
+        <Stats />
+      </section>
     </>
   );
 };
