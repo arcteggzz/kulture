@@ -1,6 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
+const initialState = [
+  {
+    image: "",
+    beatName: "ppp",
+    beatLicense: "ppp",
+    beatId: "kknjnjn",
+    beatPrice: "900",
+    availableCopies: "9",
+    userOwnerId: "080780",
+    totalSales: "9",
+    beatSize: "90088",
+  },
+  {
+    image: "",
+    beatName: "mmm",
+    beatLicense: "ppp",
+    beatId: "mmm",
+    beatPrice: "900",
+    availableCopies: "9",
+    userOwnerId: "080780",
+    totalSales: "9",
+    beatSize: "90088",
+  },
+];
 
 const cartSlice = createSlice({
   name: "cartItems",
@@ -10,7 +33,7 @@ const cartSlice = createSlice({
       state.push(action.payload);
     },
     removeFromCart: (state, action) => {
-      return state.filter((cartItem) => cartItem.id !== action.payload.id);
+      return state.filter((cartItem) => cartItem.beatId !== action.payload.id);
     },
   },
 });
