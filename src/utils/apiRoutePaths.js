@@ -17,6 +17,12 @@ const apiRoutePaths = {
   producersDetails: (producerId) => {
     return `/producers/${producerId}`;
   },
+  cart: {
+    getAllCartItems: "/carts/view",
+    addToCart: (beatId) => {
+      return `/carts/add/${beatId}`;
+    },
+  },
 };
 
 export default apiRoutePaths;

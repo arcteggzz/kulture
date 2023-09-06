@@ -5,11 +5,21 @@ import beatImg from "../LandingPage/components/images/beatImg.png";
 import heart from "../LandingPage/components/images/Heart.png";
 import share from "../LandingPage/components/images/share.png";
 import { LoadingIcon } from "../../utils";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/features/cart/cartSlice";
+// import { useDispatch } from "react-redux";
+// import { addToCart } from "../../redux/features/cart/cartSlice";
+// import axios from "axios";
+import { useSelector } from "react-redux";
+import { selectCurrentAccessToken } from "../../redux/features/auth/authSlice";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { LoadingScreen } from "../../utils";
 
 const BeatsOffersPage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const currentUserAccessToken = useSelector(selectCurrentAccessToken);
+  const [addToCartLoading, setAddToCartLoading] = useState(false);
+  const [addToCartError, setAddToCartError] = useState("");
+
   const {
     data: allBeats,
     isLoading,
@@ -17,7 +27,55 @@ const BeatsOffersPage = () => {
     isError,
   } = useGetAllBeatsQuery();
 
-  console.log(allBeats);
+  // const handleSubmit = (beatId) => {
+  //   axios
+  //     .post(`https://kulture-api.onrender.com/api/v1/carts/add/${beatId}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${currentUserAccessToken}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${currentUserAccessToken}`,
+    },
+  };
+
+  const handleSubmit = (beatId) => {
+    setAddToCartLoading(true);
+
+    fetch(
+      `https://kulture-api.onrender.com/api/v1/carts/add/${beatId}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          console.log("Audio uploaded successfully");
+          toast.success(`Beat uploaded successfully.`, {
+            autoClose: 3200,
+          });
+          setAddToCartLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setAddToCartLoading(false);
+        setAddToCartError("No Server Response");
+        toast.error(`Beat uploaded failed.`, {
+          autoClose: 3200,
+        });
+      });
+  };
 
   let content;
   if (isLoading) {
@@ -83,21 +141,22 @@ const BeatsOffersPage = () => {
                       <p>NGN{beat.attributes.price}</p>
                       <button
                         className={styles.buyBtn}
-                        onClick={() =>
-                          dispatch(
-                            addToCart({
-                              image: beat.attributes.image_url,
-                              beatName: beat.attributes.name,
-                              beatLicense: beat.attributes.licence_type,
-                              beatId: beat.id,
-                              beatPrice: beat.attributes.price,
-                              availableCopies: beat.attributes.avaliable_copies,
-                              userOwnerId: beat.attributes.user_id,
-                              totalSales: beat.attributes.total_sales,
-                              beatSize: beat.attributes.size,
-                            })
-                          )
-                        }
+                        onClick={() => {
+                          // dispatch(
+                          //   addToCart({
+                          //     image: beat.attributes.image_url,
+                          //     beatName: beat.attributes.name,
+                          //     beatLicense: beat.attributes.licence_type,
+                          //     beatId: beat.id,
+                          //     beatPrice: beat.attributes.price,
+                          //     availableCopies: beat.attributes.avaliable_copies,
+                          //     userOwnerId: beat.attributes.user_id,
+                          //     totalSales: beat.attributes.total_sales,
+                          //     beatSize: beat.attributes.size,
+                          //   })
+                          // );
+                          handleSubmit(beat.id);
+                        }}
                       >
                         BUY NOW
                       </button>
@@ -135,8 +194,19 @@ const BeatsOffersPage = () => {
   return (
     <>
       <AnimatedFadeInPage>
-        <main className={styles.BeatsOffersPage}>{content}</main>
+        <main className={styles.BeatsOffersPage}>
+          <p className={styles.errorText}>{addToCartError}</p>
+          {content}
+        </main>
+        {addToCartLoading ? (
+          <>
+            <LoadingScreen loading={addToCartLoading} />
+          </>
+        ) : (
+          <></>
+        )}
       </AnimatedFadeInPage>
+      <ToastContainer />
     </>
   );
 };
