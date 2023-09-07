@@ -24,7 +24,8 @@
         margin-bottom: 20px;
         color: #e2e2e2;
       }
-      .amount, .salesCount {
+      .amount,
+      .salesCount {
         font-size: 24px;
         font-weight: 600;
         letter-spacing: 0.036px;
@@ -73,6 +74,14 @@
         }
       }
     }
+  }
+
+  .LoadingIcon_container {
+    width: 50vw;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   @include sm() {
   }
