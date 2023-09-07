@@ -8,6 +8,7 @@ import {
   selectCurrentUserId,
   selectCurrentUserType,
 } from "../../../redux/features/auth/authSlice";
+import { LoadingIcon } from "../../../utils";
 
 const Stats = () => {
   const userId = useSelector(selectCurrentUserId);
@@ -21,11 +22,15 @@ const Stats = () => {
     isError: isErrorProducerStat,
   } = useGetSingleProducerQuery(userId);
 
-  const producerSales = producerStat?.data?.data?.attributes;
-
+  const producerSales = producerStat?.data?.attributes;
+  
   let producerSalesContent;
   if (isLoadingProducerStat) {
-    producerSalesContent = <h3 className={styles.feedback}>loading</h3>;
+    producerSalesContent = (
+      <div className={styles.LoadingIcon_container}>
+        <LoadingIcon loading={isLoadingProducerStat} />
+      </div>
+    );
   } else if (isSuccessProducerStat) {
     producerSalesContent = (
       <>
@@ -34,6 +39,10 @@ const Stats = () => {
             <h3>Sales</h3>
             <img src={visibility} alt="" />
           </div>
+          <p>Total Beats</p>
+          <p className={styles.amount}>{producerSales.total_beats}</p>
+          <p>Views</p>
+          <p className={styles.amount}>{producerSales.profile_views}</p>
           <p>Total Amount</p>
           <p className={styles.amount}>NGN {producerSales.total_revenue}</p>
           <p>Total sales</p>
@@ -67,7 +76,11 @@ const Stats = () => {
   const artistesSales = artistesStat?.data?.attributes;
   let content;
   if (isLoading) {
-    content = <h3 className={styles.feedback}>loading</h3>;
+    content = (
+      <div className={styles.LoadingIcon_container}>
+        <LoadingIcon loading={isLoading} />
+      </div>
+    );
   } else if (isSuccess) {
     content = (
       <>
@@ -76,6 +89,8 @@ const Stats = () => {
             <h3>Purchases</h3>
             <img src={visibility} alt="" />
           </div>
+          <p>Totals Views</p>
+          <p className={styles.salesCount}>{artistesSales.profile_views}</p>
           <p>Total Amount</p>
           <p className={styles.amount}>
             NGN {artistesSales.total_amount_spent}

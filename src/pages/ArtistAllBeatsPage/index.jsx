@@ -3,6 +3,7 @@ import { SingleBeatDetails } from "../../components";
 import { useGetSingleArtistesQuery } from "../../redux/features/artistes/artistes";
 import { useSelector } from "react-redux";
 import { selectCurrentUserId } from "../../redux/features/auth/authSlice";
+import { LoadingIcon } from "../../utils";
 
 const ArtistAllBeatsPage = () => {
   const userId = useSelector(selectCurrentUserId);
@@ -16,7 +17,13 @@ const ArtistAllBeatsPage = () => {
 
   let content;
   if (isLoading) {
-    content = <h3 className={styles.feedback}>loading</h3>;
+    content = (
+      <div className={styles.LoadingIcon_container}>
+        <LoadingIcon loading={isLoading} />
+      </div>
+    );
+  } else if (isSuccess && purchasedBeats?.data?.purchased_beats.length < 1) {
+    content = <h3>Empty Purchase Beats</h3>;
   } else if (isSuccess) {
     content = (
       <>
@@ -34,7 +41,7 @@ const ArtistAllBeatsPage = () => {
             beatOwnerName={"John Carter"}
             beatOwnerUsername={"arcteggzz"}
             beatGenre={purchasedBeat.genre}
-            beatLicense={`Premium License `}
+            beatLicense={purchasedBeat.license_type}
             beatSize={size}
             beatUploadDate={date}
             beatLikes={purchasedBeat.like_count}
@@ -52,37 +59,7 @@ const ArtistAllBeatsPage = () => {
 
   return (
     <>
-      <section className={styles.ArtistAllBeatsPage}>
-        {content}
-        <SingleBeatDetails
-          variant="artistePurchasedBeats"
-          beatImage={null}
-          beatName={"ArtistAllBeatsPage"}
-          beatId={"8965ggy89"}
-          beatCost={`400,000`}
-          beatOwnerName={"John Carter"}
-          beatOwnerUsername={"arcteggzz"}
-          beatGenre={"AfroPop"}
-          beatLicense={`Premium License `}
-          beatSize={"14mb"}
-          beatUploadDate={"24-12-2022"}
-          beatLikes={35}
-        />
-        <SingleBeatDetails
-          variant="artistePurchasedBeats"
-          beatImage={null}
-          beatName={"ArtistAllBeatsPage"}
-          beatId={"8965ggy89"}
-          beatCost={`400,000`}
-          beatOwnerName={"John Carter"}
-          beatOwnerUsername={"arcteggzz"}
-          beatGenre={"AfroPop"}
-          beatLicense={`Premium License `}
-          beatSize={"14mb"}
-          beatUploadDate={"24-12-2022"}
-          beatLikes={35}
-        />
-      </section>
+      <section className={styles.ArtistAllBeatsPage}>{content}</section>
     </>
   );
 };

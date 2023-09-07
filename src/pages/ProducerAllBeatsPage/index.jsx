@@ -15,8 +15,6 @@ const ProducerAllBeatsPage = () => {
     isError,
   } = useGetSingleProducerQuery(userId);
 
-  console.log(producedBeats?.data?.data?.uploaded_beats);
-
   let content;
   if (isLoading) {
     content = (
@@ -24,10 +22,15 @@ const ProducerAllBeatsPage = () => {
         <LoadingIcon loading={isLoading} />
       </div>
     );
+  } else if (
+    isSuccess &&
+    producedBeats?.data?.uploaded_beats.length < 1
+  ) {
+    content = <h3>Empty Uploaded Beats</h3>;
   } else if (isSuccess) {
     content = (
       <>
-        {producedBeats?.data?.data?.uploaded_beats.map(
+        {producedBeats?.data?.uploaded_beats.map(
           (producedBeat, index) => {
             const createdDate = new Date(producedBeat.created_at);
             const date = `${createdDate.getDate()}-${createdDate.getMonth()}-${createdDate.getFullYear()}`;
@@ -43,7 +46,7 @@ const ProducerAllBeatsPage = () => {
                 beatId={producedBeat.id}
                 beatCost={`${producedBeat.price}`}
                 beatGenre={producedBeat.genre}
-                beatLicense={`Premium License `}
+                beatLicense={producedBeat.license_type}
                 beatSize={`${size}kb`}
                 beatUploadDate={date}
                 beatLikes={producedBeat.like_count}
