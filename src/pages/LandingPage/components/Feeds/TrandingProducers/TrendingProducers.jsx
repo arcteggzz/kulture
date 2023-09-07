@@ -1,6 +1,7 @@
 import styles from "./TrendingProducers.module.scss";
 import popularProducer from "../../images/profileImage.png";
 import { useGetAllTrendingProducersQuery } from "../../../../../redux/features/trendingProducers/trendingProducersApiSlice";
+import { LoadingIcon } from "../../../../../utils";
 
 const TrendingProducers = () => {
   const {
@@ -12,7 +13,11 @@ const TrendingProducers = () => {
 
   let trendingProducerContent;
   if (isLoadingProducer) {
-    trendingProducerContent = <h3>loading</h3>;
+    trendingProducerContent = (
+      <div className={styles.LoadingIcon_container}>
+        <LoadingIcon loading={isLoadingProducer} />
+      </div>
+    );
   } else if (isSuccessProducer) {
     trendingProducerContent = (
       <>
@@ -21,7 +26,8 @@ const TrendingProducers = () => {
             <>
               <div
                 key={`${trendingProducer.data.email}${index}`}
-                className={styles.popularProducer}>
+                className={styles.popularProducer}
+              >
                 <img
                   src={popularProducer}
                   alt=""

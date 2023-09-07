@@ -7,6 +7,7 @@ const routePaths = {
   SEARCHPAGE: "/search",
   LOGINCATCHPAGE: "/login-required",
   CARTPAGE: "/preview-cart",
+  BUYBEATSPAGE: "/market",
   USERPROFILEPAGEROUTES: {
     OVERVIEW: "/dashboard/overview",
     PRODUCER: {

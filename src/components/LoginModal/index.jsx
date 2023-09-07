@@ -66,7 +66,7 @@ export default function LoginModal() {
           });
           dispatch(
             setCredentials({
-              username: `${response?.data?.user?.attributes?.first_name} ${response?.data?.user?.attributes?.last_name}`,
+              userName: response?.data?.user?.attributes?.username,
               accessToken: response?.data?.token,
               userImage: response?.data?.user?.attributes?.profile_picture,
               userId: response?.data?.user.id,

@@ -1,5 +1,6 @@
 import { useGetAllTrendingCategoriesQuery } from "../../../../../redux/features/trendingCategories/trendingCategoriesApiSlice";
 import styles from "./TrendingCategories.module.scss";
+import { LoadingIcon } from "../../../../../utils";
 
 const TrendingCategories = () => {
   const {
@@ -11,7 +12,11 @@ const TrendingCategories = () => {
 
   let trendingCategoryContent;
   if (isLoading) {
-    trendingCategoryContent = <h3>loading</h3>;
+    trendingCategoryContent = (
+      <div className={styles.LoadingIcon_container}>
+        <LoadingIcon loading={isLoading} />
+      </div>
+    );
   } else if (isSuccess) {
     trendingCategoryContent = (
       <>
@@ -21,7 +26,8 @@ const TrendingCategories = () => {
             <>
               <p
                 className={styles.category}
-                key={`${trendingCategory.attributes.user_id}${index}`}>
+                key={`${trendingCategory.attributes.user_id}${index}`}
+              >
                 {trendingCategory.attributes.name}
               </p>
             </>

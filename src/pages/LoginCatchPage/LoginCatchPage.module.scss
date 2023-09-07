@@ -10,4 +10,43 @@
 
   @include sm() {
   }
+
+  .modal_container_open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    left: 0;
+    top: 0vh;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8.575px);
+
+    z-index: 10000;
+    transition: all ease 0.5s;
+    opacity: 1;
+  }
+
+  .modal_container_closed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    left: 0;
+    top: -100vh;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8.575px);
+
+    animation: dropDown 0.4s ease forwards;
+    z-index: 10000;
+    transition: all ease 0.5s;
+    opacity: 0.2;
+  }
 }

@@ -52,6 +52,7 @@
         font-weight: 600;
         letter-spacing: 0.28px;
         cursor: pointer;
+        text-decoration: none;
       }
     }
   }
@@ -59,7 +60,7 @@
   .uploadBtnContainer {
     position: absolute;
     top: 210px;
-    left: 233px;
+    left: 245px;
     .upload_btn_wrapper {
       position: relative;
       overflow: hidden;

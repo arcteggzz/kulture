@@ -38,7 +38,7 @@ export default function SingleBeatDetails({
             {variant === "producerAllBeats" ? (
               <>
                 <p className={styles.secondary_text}>{beatGenre}</p>
-                <p className={styles.secondary_text}>{beatSize}</p>
+                <p className={styles.secondary_text}>{`${beatSize}`}</p>
               </>
             ) : (
               <></>
