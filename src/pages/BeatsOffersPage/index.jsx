@@ -20,6 +20,8 @@ const BeatsOffersPage = () => {
   const currentUserAccessToken = useSelector(selectCurrentAccessToken);
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [addToCartError, setAddToCartError] = useState("");
+  const [addToFavouriteLoading, setAddToFavouriteLoading] = useState(false)
+  const [addToFavouriteError, setAddToFavouriteError] = useState("");
 
   const {
     data: allBeats,
@@ -76,7 +78,28 @@ const BeatsOffersPage = () => {
   };
 
   const handleAddToFavorites = (beatId) => {
-    console.log(beatId);
+    setAddToFavouriteLoading(true);
+
+    fetch(`${BASE_URL}/favourites/${beatId}`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          console.log("Audio saved successfully");
+          toast.success(`Beat saved successfully.`, {
+            autoClose: 3200,
+          });
+          setAddToFavouriteLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setAddToFavouriteLoading(false);
+        setAddToFavouriteError("No Server Response");
+        toast.error(`Beat saved failed.`, {
+          autoClose: 3200,
+        });
+      });
   };
 
   let content;
@@ -179,7 +202,7 @@ const BeatsOffersPage = () => {
                     onClick={() => handleAddToFavorites(beat.id)}
                   >
                     <img src={heart} />
-                    <p className={styles.saveBtn}>Save for later</p>
+                    <p className={styles.save}>Save for later</p>
                   </button>
                 </div>
               </div>
@@ -201,11 +224,19 @@ const BeatsOffersPage = () => {
       <AnimatedFadeInPage>
         <main className={styles.BeatsOffersPage}>
           <p className={styles.errorText}>{addToCartError}</p>
+          <p className={styles.errorText}>{addToFavouriteError}</p>
           {content}
         </main>
         {addToCartLoading ? (
           <>
             <LoadingScreen loading={addToCartLoading} />
+          </>
+        ) : (
+          <></>
+        )}
+        {addToFavouriteLoading ? (
+          <>
+            <LoadingScreen loading={addToFavouriteLoading} />
           </>
         ) : (
           <></>

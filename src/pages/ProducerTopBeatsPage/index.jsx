@@ -22,11 +22,8 @@ const ProducerTopBeatsPage = () => {
         <LoadingIcon loading={isLoading} />
       </div>
     );
-  } else if (
-    isSuccess &&
-    topBeats?.data?.beats_liked_by_artistes.length < 1
-  ) {
-    content = <h3>Empty Top Beats</h3>;
+  } else if (isSuccess && topBeats?.data?.beats_liked_by_artistes.length < 1) {
+    content = <h3>Your have no top Beat</h3>;
   } else if (isSuccess) {
     content = (
       <>
@@ -34,21 +31,25 @@ const ProducerTopBeatsPage = () => {
           const createdDate = new Date(topBeat.created_at);
           const date = `${createdDate.getDate()}-${createdDate.getMonth()}-${createdDate.getFullYear()}`;
 
-          const size = Math.floor(topBeat.size / 1024);
-          <SingleBeatDetails
-            variant="producerAllBeats"
-            beatImage={topBeat.imageUrl}
-            beatName={topBeat.name}
-            beatId={topBeat.genre_id}
-            beatCost={`${topBeat.price}`}
-            beatOwnerName={"John Carter"}
-            beatOwnerUsername={"arcteggzz"}
-            beatGenre={topBeat.genre}
-            beatLicense={topBeat.license_type}
-            beatSize={size}
-            beatUploadDate={date}
-            beatLikes={topBeat.like_count}
-          />;
+          const size = Math.floor(topBeat.size / 1024).toString();
+          return (
+            <>
+              <SingleBeatDetails
+                variant="producerAllBeats"
+                beatImage={topBeat.imageUrl}
+                beatName={topBeat.name}
+                beatId={topBeat.genre_id}
+                beatCost={`${topBeat.price}`}
+                beatOwnerName={"John Carter"}
+                beatOwnerUsername={"arcteggzz"}
+                beatGenre={topBeat.genre}
+                beatLicense={topBeat.license_type}
+                beatSize={size}
+                beatUploadDate={date}
+                beatLikes={topBeat.like_count}
+              />
+            </>
+          );
         })}
       </>
     );
