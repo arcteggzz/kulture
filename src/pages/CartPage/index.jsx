@@ -3,8 +3,13 @@ import { AnimatedFadeInPage } from "../../utils/";
 import SingleCartItem from "../../components/SingleCartItem";
 import { useGetAllCartItemsQuery } from "../../redux/features/cart/cartApiSlice";
 import { LoadingIcon } from "../../utils/";
+import { BASE_URL } from "../../utils/apiRoutePaths";
+import { useSelector } from "react-redux";
+import { selectCurrentAccessToken } from "../../redux/features/auth/authSlice";
 
 const CartPage = () => {
+  const currentUserAccessToken = useSelector(selectCurrentAccessToken);
+
   const {
     data: allCartItems,
     isLoading,
@@ -12,9 +17,23 @@ const CartPage = () => {
     isError,
   } = useGetAllCartItemsQuery();
 
-  const handleCheckout = () => {};
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${currentUserAccessToken}`,
+    },
+  };
 
-  console.log(allCartItems?.data?.attributes?.items);
+  const handleCheckout = () => {
+    fetch(`${BASE_URL}/payment/pay`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   let content;
   if (isLoading) {

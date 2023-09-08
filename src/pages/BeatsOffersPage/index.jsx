@@ -13,6 +13,7 @@ import { selectCurrentAccessToken } from "../../redux/features/auth/authSlice";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { LoadingScreen } from "../../utils";
+import { BASE_URL } from "../../utils/apiRoutePaths";
 
 const BeatsOffersPage = () => {
   // const dispatch = useDispatch();
@@ -49,13 +50,10 @@ const BeatsOffersPage = () => {
     },
   };
 
-  const handleSubmit = (beatId) => {
+  const handleAddToCart = (beatId) => {
     setAddToCartLoading(true);
 
-    fetch(
-      `https://kulture-api.onrender.com/api/v1/carts/add/${beatId}`,
-      requestOptions
-    )
+    fetch(`${BASE_URL}/carts/add/${beatId}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -75,6 +73,10 @@ const BeatsOffersPage = () => {
           autoClose: 3200,
         });
       });
+  };
+
+  const handleAddToFavorites = (beatId) => {
+    console.log(beatId);
   };
 
   let content;
@@ -155,7 +157,7 @@ const BeatsOffersPage = () => {
                           //     beatSize: beat.attributes.size,
                           //   })
                           // );
-                          handleSubmit(beat.id);
+                          handleAddToCart(beat.id);
                         }}
                       >
                         BUY NOW
@@ -172,10 +174,13 @@ const BeatsOffersPage = () => {
                     <img src={share} />
                     <button className={styles.shareBtn}>Share</button>
                   </div>
-                  <div className={styles.btnFlex}>
+                  <button
+                    className={styles.btnFlex}
+                    onClick={() => handleAddToFavorites(beat.id)}
+                  >
                     <img src={heart} />
-                    <button className={styles.saveBtn}>Save for later</button>
-                  </div>
+                    <p className={styles.saveBtn}>Save for later</p>
+                  </button>
                 </div>
               </div>
             </>
