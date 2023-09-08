@@ -15,3 +15,4 @@ export { default as ArtistFavoriteBeatsPage } from "./ArtistFavoriteBeatsPage";
 export { default as ProducerAllBeatsPage } from "./ProducerAllBeatsPage";
 export { default as ProducerTopBeatsPage } from "./ProducerTopBeatsPage";
 export { default as BeatsOffersPage } from "./BeatsOffersPage";
+export { default as VerifyPaymentPage } from "./VerifyPaymentPage";

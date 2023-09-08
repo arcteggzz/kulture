@@ -8,6 +8,7 @@ const routePaths = {
   LOGINCATCHPAGE: "/login-required",
   CARTPAGE: "/preview-cart",
   BUYBEATSPAGE: "/market",
+  VERIFYPAYMENT: "/verify-payment",
   USERPROFILEPAGEROUTES: {
     OVERVIEW: "/dashboard/overview",
     PRODUCER: {
