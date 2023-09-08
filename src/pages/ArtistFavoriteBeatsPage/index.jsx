@@ -23,28 +23,33 @@ const ArtistFavoriteBeatsPage = () => {
       </div>
     );
   } else if (isSuccess && favouriteBeats?.data?.favourite_beats.length < 1) {
-    content = <h3>Empty Favourite Beats</h3>;
+    content = <h3>You have no favourite beat</h3>;
   } else if (isSuccess) {
     content = (
       <>
         {favouriteBeats.data.favourite_beats.map((favouriteBeat) => {
           const createdDate = new Date(favouriteBeat.created_at);
           const date = `${createdDate.getDate()}-${createdDate.getMonth()}-${createdDate.getFullYear()}`;
-          const size = Math.floor(favouriteBeat.size / 1024);
-          <SingleBeatDetails
-            variant="artistefavouriteBeats"
-            beatImage={favouriteBeat.imageUrl}
-            beatName={favouriteBeat.name}
-            beatId={favouriteBeat.genre_id}
-            beatCost={`${favouriteBeat.price}`}
-            beatOwnerName={"John Carter"}
-            beatOwnerUsername={"arcteggzz"}
-            beatGenre={favouriteBeat.genre}
-            beatLicense={favouriteBeat.license_type}
-            beatSize={size}
-            beatUploadDate={date}
-            beatLikes={favouriteBeat.like_count}
-          />;
+          const size = Math.floor(favouriteBeat.size / 1024).toString();
+
+          return (
+            <>
+              <SingleBeatDetails
+                variant="artistefavouriteBeats"
+                beatImage={favouriteBeat.imageUrl}
+                beatName={favouriteBeat.name}
+                beatId={favouriteBeat.genre_id}
+                beatCost={`${favouriteBeat.price}`}
+                beatOwnerName={"John Carter"}
+                beatOwnerUsername={"arcteggzz"}
+                beatGenre={favouriteBeat.genre}
+                beatLicense={favouriteBeat.license_type}
+                beatSize={size}
+                beatUploadDate={date}
+                beatLikes={favouriteBeat.like_count}
+              />
+            </>
+          );
         })}
       </>
     );
