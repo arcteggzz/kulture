@@ -6,28 +6,55 @@ import success_icon from "./images/success_icon.png";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../redux/features/auth/authSlice";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "../../utils/apiRoutePaths";
+import axios from "axios";
 
 const VerifyPaymentPage = () => {
   const dispatch = useDispatch();
-  const isLoading = false;
-  const isSuccess = false;
-  const isError = true;
-  const response = [];
+  const currentFullUrl = window.location.href;
+  const url = new URL(currentFullUrl);
+  const trxref = url.searchParams.get("trxref");
+  const reference = url.searchParams.get("reference");
 
-  const relogin = () => {
-    dispatch(
-      setCredentials({
-        userName: response?.data?.user?.attributes?.username,
-        accessToken: response?.data?.token,
-        userImage: response?.data?.user?.attributes?.profile_picture,
-        userId: response?.data?.user.id,
-        userEmail: response?.data?.user?.attributes?.email,
-        firstName: response?.data?.user?.attributes?.first_name,
-        lastName: response?.data?.user?.attributes?.last_name,
-        userType: response?.data?.user?.attributes?.user_type,
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    if (!trxref || !reference) return;
+
+    const verifyPaymentUrl = `${BASE_URL}/verifyPayment?trxref=${trxref}&reference=${reference}`; // Replace with your API endpoint
+
+    axios
+      .get(verifyPaymentUrl)
+      .then((response) => {
+        console.log(response);
+
+        if (response?.data?.status) {
+          setIsLoading(false);
+          setIsSuccess(true);
+          dispatch(
+            setCredentials({
+              userName: response?.data?.data?.user?.attributes?.username,
+              accessToken: response?.data?.data?.token,
+              userImage:
+                response?.data?.data?.user?.attributes?.profile_picture,
+              userId: response?.data?.data?.user?.id,
+              userEmail: response?.data?.data?.user?.attributes?.email,
+              firstName: response?.data?.data?.user?.attributes?.first_name,
+              lastName: response?.data?.data?.user?.attributes?.last_name,
+              userType: response?.data?.data?.user?.type,
+            })
+          );
+        }
       })
-    );
-  };
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+        setIsError(true);
+      });
+  });
 
   let content;
   if (isLoading) {

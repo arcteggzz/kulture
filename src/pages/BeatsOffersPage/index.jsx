@@ -7,7 +7,7 @@ import share from "../LandingPage/components/images/share.png";
 import { LoadingIcon } from "../../utils";
 // import { useDispatch } from "react-redux";
 // import { addToCart } from "../../redux/features/cart/cartSlice";
-// import axios from "axios";
+import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectCurrentAccessToken } from "../../redux/features/auth/authSlice";
 import { useState } from "react";
@@ -20,7 +20,7 @@ const BeatsOffersPage = () => {
   const currentUserAccessToken = useSelector(selectCurrentAccessToken);
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [addToCartError, setAddToCartError] = useState("");
-  const [addToFavouriteLoading, setAddToFavouriteLoading] = useState(false)
+  const [addToFavouriteLoading, setAddToFavouriteLoading] = useState(false);
   const [addToFavouriteError, setAddToFavouriteError] = useState("");
 
   const {
@@ -30,38 +30,20 @@ const BeatsOffersPage = () => {
     isError,
   } = useGetAllBeatsQuery();
 
-  // const handleSubmit = (beatId) => {
-  //   axios
-  //     .post(`https://kulture-api.onrender.com/api/v1/carts/add/${beatId}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${currentUserAccessToken}`,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${currentUserAccessToken}`,
-    },
-  };
-
   const handleAddToCart = (beatId) => {
     setAddToCartLoading(true);
 
-    fetch(`${BASE_URL}/carts/add/${beatId}`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data) {
-          console.log("Audio uploaded successfully");
-          toast.success(`Beat uploaded successfully.`, {
+    axios
+      .post(`${BASE_URL}/carts/add/${beatId}`, null, {
+        headers: {
+          Authorization: `Bearer ${currentUserAccessToken}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        if (response) {
+          console.log("Beat added to Cart");
+          toast.success(`Beat added to Cart`, {
             autoClose: 3200,
           });
           setAddToCartLoading(false);
@@ -71,11 +53,44 @@ const BeatsOffersPage = () => {
         console.log(error);
         setAddToCartLoading(false);
         setAddToCartError("No Server Response");
-        toast.error(`Beat uploaded failed.`, {
+        toast.error(`Add to Cart failed.`, {
           autoClose: 3200,
         });
       });
   };
+
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${currentUserAccessToken}`,
+    },
+    body: null,
+  };
+
+  // const handleAddToCart = (beatId) => {
+  //   setAddToCartLoading(true);
+
+  //   fetch(`${BASE_URL}/carts/add/${beatId}`, requestOptions)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data) {
+  //         console.log("Audio uploaded successfully");
+  //         toast.success(`Beat uploaded successfully.`, {
+  //           autoClose: 3200,
+  //         });
+  //         setAddToCartLoading(false);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setAddToCartLoading(false);
+  //       setAddToCartError("No Server Response");
+  //       toast.error(`Beat uploaded failed.`, {
+  //         autoClose: 3200,
+  //       });
+  //     });
+  // };
 
   const handleAddToFavorites = (beatId) => {
     setAddToFavouriteLoading(true);

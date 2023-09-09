@@ -15,6 +15,10 @@ const CartPage = () => {
   const [paymentLoading, setPaymentLoading] = useState(false);
   const [paymentError, setPaymentError] = useState(false);
   const [generatedHref, setGeneratedHref] = useState(null);
+  // Construct the base URL
+  const baseUrl = `${window.location.protocol}//${window.location.hostname}${
+    window.location.port ? ":" + window.location.port : ""
+  }`;
 
   const {
     data: allCartItems,
@@ -58,8 +62,12 @@ const CartPage = () => {
       Authorization: `Bearer ${currentUserAccessToken}`,
     };
 
+    const requestBody = {
+      baseUrl: baseUrl,
+    };
+
     axios
-      .post(`${BASE_URL}/payment/pay`, null, {
+      .post(`${BASE_URL}/payment/pay`, requestBody, {
         headers,
       })
       .then((response) => {
