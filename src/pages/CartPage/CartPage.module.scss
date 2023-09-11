@@ -77,6 +77,11 @@
       letter-spacing: 0.1px;
       cursor: pointer;
     }
+
+    button:disabled {
+      background: var(--Purple, #464647);
+      color: var(--White, #ffffff24);
+    }
   }
 }
 

@@ -252,7 +252,7 @@ const UploadPage = () => {
                         </div>
                       </div>
                       <p className={styles.max}>
-                        Max. File Size<span>: 500MB</span>
+                        Max. File Size<span>: 2MB</span>
                       </p>
                     </div>
                     <div>

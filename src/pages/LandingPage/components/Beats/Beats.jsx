@@ -57,8 +57,8 @@ const Beats = () => {
                     className={styles.profileImage}
                   />
                   <p>
-                    {beat.attributes.name} <span>@ohuly</span>{" "}
-                    <span> • 2 Hours Ago</span>
+                    {beat.attributes.name}
+                    {/* <span> • 2 Hours Ago</span> */}
                   </p>
                 </div>
                 <div className={styles.beatDetails}>
@@ -74,7 +74,7 @@ const Beats = () => {
 
                   <div>
                     <h2>{beat.attributes.genre}</h2>
-                    <p>beat by {beat.attributes.name} @ohuly </p>
+                    {/* <p>beat by {beat.attributes.name} @ohuly </p> */}
                     <p> released on {date}</p>
                     <div className={styles.price}>
                       <p>NGN{beat.attributes.price}</p>

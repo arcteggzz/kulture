@@ -174,7 +174,12 @@ const CartPage = () => {
 
             <div>{cartContentSummary}</div>
 
-            <button onClick={handleCheckout}>Proceed to Payment</button>
+            <button
+              onClick={handleCheckout}
+              disabled={allCartItems?.data?.attributes?.items?.length < 1}
+            >
+              Proceed to Payment
+            </button>
           </div>
         </section>
 
