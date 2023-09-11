@@ -23,7 +23,7 @@ const Stats = () => {
   } = useGetSingleProducerQuery(userId);
 
   const producerSales = producerStat?.data?.attributes;
-  
+
   let producerSalesContent;
   if (isLoadingProducerStat) {
     producerSalesContent = (
@@ -91,10 +91,10 @@ const Stats = () => {
           </div>
           <p>Totals Views</p>
           <p className={styles.salesCount}>{artistesSales.profile_views}</p>
-          <p>Total Amount</p>
+          {/* <p>Total Amount</p>
           <p className={styles.amount}>
             NGN {artistesSales.total_amount_spent}
-          </p>
+          </p> */}
           <p>Total Purchases</p>
           <p className={styles.salesCount}>
             {artistesSales.total_beats_purchased}
