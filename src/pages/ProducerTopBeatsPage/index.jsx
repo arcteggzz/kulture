@@ -3,6 +3,7 @@ import { SingleBeatDetails } from "../../components";
 import { useSelector } from "react-redux";
 import { selectCurrentUserId } from "../../redux/features/auth/authSlice";
 import { useGetSingleProducerQuery } from "../../redux/features/producers/producersApiSlice";
+import { LoadingIcon } from "../../utils";
 
 const ProducerTopBeatsPage = () => {
   const userId = useSelector(selectCurrentUserId);
@@ -16,29 +17,39 @@ const ProducerTopBeatsPage = () => {
 
   let content;
   if (isLoading) {
-    content = <h3 className={styles.feedback}>loading</h3>;
+    content = (
+      <div className={styles.LoadingIcon_container}>
+        <LoadingIcon loading={isLoading} />
+      </div>
+    );
+  } else if (isSuccess && topBeats?.data?.beats_liked_by_artistes.length < 1) {
+    content = <h3>Your have no top Beat</h3>;
   } else if (isSuccess) {
     content = (
       <>
-        {topBeats?.data?.data?.beats_liked_by_artistes.map((topBeat) => {
+        {topBeats?.data?.beats_liked_by_artistes.map((topBeat) => {
           const createdDate = new Date(topBeat.created_at);
           const date = `${createdDate.getDate()}-${createdDate.getMonth()}-${createdDate.getFullYear()}`;
 
-          const size = Math.floor(topBeat.size / 1024);
-          <SingleBeatDetails
-            variant="producerAllBeats"
-            beatImage={topBeat.imageUrl}
-            beatName={topBeat.name}
-            beatId={topBeat.genre_id}
-            beatCost={`${topBeat.price}`}
-            beatOwnerName={"John Carter"}
-            beatOwnerUsername={"arcteggzz"}
-            beatGenre={topBeat.genre}
-            beatLicense={`Premium License `}
-            beatSize={size}
-            beatUploadDate={date}
-            beatLikes={topBeat.like_count}
-          />;
+          const size = Math.floor(topBeat.size / 1024).toString();
+          return (
+            <>
+              <SingleBeatDetails
+                variant="producerAllBeats"
+                beatImage={topBeat.imageUrl}
+                beatName={topBeat.name}
+                beatId={topBeat.genre_id}
+                beatCost={`${topBeat.price}`}
+                beatOwnerName={"John Carter"}
+                beatOwnerUsername={"arcteggzz"}
+                beatGenre={topBeat.genre}
+                beatLicense={topBeat.license_type}
+                beatSize={size}
+                beatUploadDate={date}
+                beatLikes={topBeat.like_count}
+              />
+            </>
+          );
         })}
       </>
     );
@@ -51,37 +62,7 @@ const ProducerTopBeatsPage = () => {
   }
   return (
     <>
-      <section className={styles.ProducerTopBeatsPage}>
-        {content}
-        <SingleBeatDetails
-          variant="producerTopBeats"
-          beatImage={null}
-          beatName={"producerTopBeats"}
-          beatId={"8965ggy89"}
-          beatCost={`400,000`}
-          beatOwnerName={"John Carter"}
-          beatOwnerUsername={"arcteggzz"}
-          beatGenre={"AfroPop"}
-          beatLicense={`Premium License `}
-          beatSize={"14mb"}
-          beatUploadDate={"24-12-2022"}
-          beatLikes={35}
-        />
-        <SingleBeatDetails
-          variant="producerTopBeats"
-          beatImage={null}
-          beatName={"producerTopBeats"}
-          beatId={"8965ggy89"}
-          beatCost={`400,000`}
-          beatOwnerName={"John Carter"}
-          beatOwnerUsername={"arcteggzz"}
-          beatGenre={"AfroPop"}
-          beatLicense={`Premium License `}
-          beatSize={"14mb"}
-          beatUploadDate={"24-12-2022"}
-          beatLikes={35}
-        />
-      </section>
+      <section className={styles.ProducerTopBeatsPage}>{content}</section>
     </>
   );
 };

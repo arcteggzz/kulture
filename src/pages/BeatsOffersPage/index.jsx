@@ -7,18 +7,21 @@ import share from "../LandingPage/components/images/share.png";
 import { LoadingIcon } from "../../utils";
 // import { useDispatch } from "react-redux";
 // import { addToCart } from "../../redux/features/cart/cartSlice";
-// import axios from "axios";
+import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectCurrentAccessToken } from "../../redux/features/auth/authSlice";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { LoadingScreen } from "../../utils";
+import { BASE_URL } from "../../utils/apiRoutePaths";
 
 const BeatsOffersPage = () => {
   // const dispatch = useDispatch();
   const currentUserAccessToken = useSelector(selectCurrentAccessToken);
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [addToCartError, setAddToCartError] = useState("");
+  const [addToFavouriteLoading, setAddToFavouriteLoading] = useState(false);
+  const [addToFavouriteError, setAddToFavouriteError] = useState("");
 
   const {
     data: allBeats,
@@ -27,41 +30,20 @@ const BeatsOffersPage = () => {
     isError,
   } = useGetAllBeatsQuery();
 
-  // const handleSubmit = (beatId) => {
-  //   axios
-  //     .post(`https://kulture-api.onrender.com/api/v1/carts/add/${beatId}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${currentUserAccessToken}`,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${currentUserAccessToken}`,
-    },
-  };
-
-  const handleSubmit = (beatId) => {
+  const handleAddToCart = (beatId) => {
     setAddToCartLoading(true);
 
-    fetch(
-      `https://kulture-api.onrender.com/api/v1/carts/add/${beatId}`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data) {
-          console.log("Audio uploaded successfully");
-          toast.success(`Beat uploaded successfully.`, {
+    axios
+      .post(`${BASE_URL}/carts/add/${beatId}`, null, {
+        headers: {
+          Authorization: `Bearer ${currentUserAccessToken}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        if (response) {
+          console.log("Beat added to Cart");
+          toast.success(`Beat added to Cart`, {
             autoClose: 3200,
           });
           setAddToCartLoading(false);
@@ -71,7 +53,65 @@ const BeatsOffersPage = () => {
         console.log(error);
         setAddToCartLoading(false);
         setAddToCartError("No Server Response");
-        toast.error(`Beat uploaded failed.`, {
+        toast.error(`Add to Cart failed.`, {
+          autoClose: 3200,
+        });
+      });
+  };
+
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${currentUserAccessToken}`,
+    },
+    body: null,
+  };
+
+  // const handleAddToCart = (beatId) => {
+  //   setAddToCartLoading(true);
+
+  //   fetch(`${BASE_URL}/carts/add/${beatId}`, requestOptions)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data) {
+  //         console.log("Audio uploaded successfully");
+  //         toast.success(`Beat uploaded successfully.`, {
+  //           autoClose: 3200,
+  //         });
+  //         setAddToCartLoading(false);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setAddToCartLoading(false);
+  //       setAddToCartError("No Server Response");
+  //       toast.error(`Beat uploaded failed.`, {
+  //         autoClose: 3200,
+  //       });
+  //     });
+  // };
+
+  const handleAddToFavorites = (beatId) => {
+    setAddToFavouriteLoading(true);
+
+    fetch(`${BASE_URL}/favourites/${beatId}`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          console.log("Audio saved successfully");
+          toast.success(`Beat saved successfully.`, {
+            autoClose: 3200,
+          });
+          setAddToFavouriteLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setAddToFavouriteLoading(false);
+        setAddToFavouriteError("No Server Response");
+        toast.error(`Beat saved failed.`, {
           autoClose: 3200,
         });
       });
@@ -155,7 +195,7 @@ const BeatsOffersPage = () => {
                           //     beatSize: beat.attributes.size,
                           //   })
                           // );
-                          handleSubmit(beat.id);
+                          handleAddToCart(beat.id);
                         }}
                       >
                         BUY NOW
@@ -172,10 +212,13 @@ const BeatsOffersPage = () => {
                     <img src={share} />
                     <button className={styles.shareBtn}>Share</button>
                   </div>
-                  <div className={styles.btnFlex}>
+                  <button
+                    className={styles.btnFlex}
+                    onClick={() => handleAddToFavorites(beat.id)}
+                  >
                     <img src={heart} />
-                    <button className={styles.saveBtn}>Save for later</button>
-                  </div>
+                    <p className={styles.save}>Save for later</p>
+                  </button>
                 </div>
               </div>
             </>
@@ -196,11 +239,19 @@ const BeatsOffersPage = () => {
       <AnimatedFadeInPage>
         <main className={styles.BeatsOffersPage}>
           <p className={styles.errorText}>{addToCartError}</p>
+          <p className={styles.errorText}>{addToFavouriteError}</p>
           {content}
         </main>
         {addToCartLoading ? (
           <>
             <LoadingScreen loading={addToCartLoading} />
+          </>
+        ) : (
+          <></>
+        )}
+        {addToFavouriteLoading ? (
+          <>
+            <LoadingScreen loading={addToFavouriteLoading} />
           </>
         ) : (
           <></>

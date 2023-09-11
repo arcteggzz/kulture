@@ -1,10 +1,25 @@
 import styles from "./CartPage.module.scss";
-import { AnimatedFadeInPage } from "../../utils/";
+import { AnimatedFadeInPage, LoadingPayment } from "../../utils/";
 import SingleCartItem from "../../components/SingleCartItem";
 import { useGetAllCartItemsQuery } from "../../redux/features/cart/cartApiSlice";
 import { LoadingIcon } from "../../utils/";
+import { BASE_URL } from "../../utils/apiRoutePaths";
+import { useSelector } from "react-redux";
+import { selectCurrentAccessToken } from "../../redux/features/auth/authSlice";
+import { useState } from "react";
+import axios from "axios";
 
 const CartPage = () => {
+  const currentUserAccessToken = useSelector(selectCurrentAccessToken);
+  const [showPaymentLoading, setShowPaymentLoading] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [paymentError, setPaymentError] = useState(false);
+  const [generatedHref, setGeneratedHref] = useState(null);
+  // Construct the base URL
+  const baseUrl = `${window.location.protocol}//${window.location.hostname}${
+    window.location.port ? ":" + window.location.port : ""
+  }`;
+
   const {
     data: allCartItems,
     isLoading,
@@ -12,9 +27,76 @@ const CartPage = () => {
     isError,
   } = useGetAllCartItemsQuery();
 
-  const handleCheckout = () => {};
+  // const requestOptions = {
+  //   method: "POST",
+  //   headers: {
+  //     Authorization: `Bearer ${currentUserAccessToken}`,
+  //   },
+  // };
 
-  console.log(allCartItems?.data?.attributes?.items);
+  // const handleCheckout = () => {
+  //   setShowPaymentLoading(true);
+  //   setPaymentLoading(true);
+
+  //   fetch(`${BASE_URL}/payment/pay`, requestOptions)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       console.log(data?.data);
+  //       setPaymentLoading(false);
+  //       setPaymentError(false);
+  //       setGeneratedHref(data?.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setPaymentLoading(false);
+  //       setPaymentError(true);
+  //     });
+  // };
+
+  const handleCheckout = () => {
+    setShowPaymentLoading(true);
+    setPaymentLoading(true);
+
+    const headers = {
+      Authorization: `Bearer ${currentUserAccessToken}`,
+    };
+
+    const requestBody = {
+      baseUrl: baseUrl,
+    };
+
+    axios
+      .post(`${BASE_URL}/payment/pay`, requestBody, {
+        headers,
+      })
+      .then((response) => {
+        console.log(response?.data?.data);
+        setPaymentLoading(false);
+        setPaymentError(false);
+        setGeneratedHref(response?.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        setPaymentLoading(false);
+        setPaymentError(true);
+      });
+
+    // fetch(`${BASE_URL}/payment/pay`, requestOptions)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     console.log(data?.data);
+    //     setPaymentLoading(false);
+    //     setPaymentError(false);
+    //     setGeneratedHref(data?.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setPaymentLoading(false);
+    //     setPaymentError(true);
+    //   });
+  };
 
   let content;
   if (isLoading) {
@@ -34,14 +116,14 @@ const CartPage = () => {
               <SingleCartItem
                 key={`${beatData.id}${index}`}
                 beatName={beatData.name}
-                beatLicense={beatData.beat_license} //missing
+                beatLicense={beatData.beat_license}
                 image={beatData.image_url}
                 beatId={beatData.id}
                 beatPrice={beatData.price}
-                availableCopies={beatData.available_copies} //missing
-                userOwnerId={beatData.owner_id} //missing
-                beatSize={beatData.beat_size} //missing
-                totalSales={beatData.total_sales} //missing
+                availableCopies={beatData.available_copies}
+                userOwnerId={beatData.owner_id}
+                beatSize={beatData.beat_size}
+                totalSales={beatData.total_sales}
               />
             </>
           );
@@ -92,9 +174,19 @@ const CartPage = () => {
 
             <div>{cartContentSummary}</div>
 
-            <button onClick={handleCheckout}>Proceed to Checkout</button>
+            <button onClick={handleCheckout}>Proceed to Payment</button>
           </div>
         </section>
+
+        {showPaymentLoading ? (
+          <LoadingPayment
+            paymentLoading={paymentLoading}
+            paymentHref={generatedHref}
+            paymentError={paymentError}
+          />
+        ) : (
+          <></>
+        )}
       </AnimatedFadeInPage>
     </>
   );

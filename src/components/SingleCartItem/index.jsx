@@ -30,7 +30,7 @@ const SingleCartItem = ({
             <p>{`${availableCopies} copies left`}</p>
           </div>
           <div className={styles.details}>
-            <p>{`${beatSize}mb`}</p>
+            <p>{`${beatSize} KB`}</p>
             <p>{`${totalSales} already sold`}</p>
           </div>
         </div>
