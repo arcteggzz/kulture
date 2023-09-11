@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SplashPage.module.scss";
 import { AnimatedFadeInPage, routePaths } from "../../utils/";
+import kulture_logo from "./kulture_logo.png";
 
 const SplashPage = () => {
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ const SplashPage = () => {
   return (
     <>
       <AnimatedFadeInPage>
-        <section className={styles.SplashPage}>SplashPage</section>
+        <section className={styles.SplashPage}>
+          <img src={kulture_logo} alt="Kulture logo icon" />
+        </section>
       </AnimatedFadeInPage>
     </>
   );
