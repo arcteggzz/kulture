@@ -74,6 +74,7 @@ export default function Navbar() {
               <>
                 <div className={styles.linkBtn}>
                   <img src={upload} alt="" />
+
                   {currentUserType === "producer" ? (
                     <Link className={styles.link} to={routePaths.UPLOADPAGE}>
                       Upload
@@ -87,10 +88,25 @@ export default function Navbar() {
               </>
             )}
             <div className={styles.linkBtn}>
-              <img src={profile} alt="" />
-              <Link className={styles.link} to={routePaths.USERPROFILEPAGE}>
-                Profile
-              </Link>
+              {currentUserType ? <img src={profile} alt="" /> : <></>}
+
+              {currentUserType === "producer" ? (
+                <Link
+                  className={styles.link}
+                  to={routePaths.USERPROFILEPAGEROUTES.PRODUCER.OVERVIEW}
+                >
+                  Profile
+                </Link>
+              ) : currentUserType === "artiste" ? (
+                <Link
+                  className={styles.link}
+                  to={routePaths.USERPROFILEPAGEROUTES.ARTISTE.OVERVIEW}
+                >
+                  Profile
+                </Link>
+              ) : (
+                <></>
+              )}
             </div>
             {!login ? (
               <div className={styles.signContainer}>

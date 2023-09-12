@@ -24,7 +24,7 @@ const Hero = () => {
             <img src={searchIcon} />
           </Link>
         </div>
-        <button className={styles.uploadBtn}>UPLOAD YOUR BEAT</button>
+        {/* <button className={styles.uploadBtn}>UPLOAD YOUR BEAT</button> */}
       </div>
     </div>
   );

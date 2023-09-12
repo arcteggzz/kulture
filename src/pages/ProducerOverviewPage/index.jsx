@@ -2,54 +2,52 @@ import styles from "./ProducerOverviewPage.module.scss";
 import { AnimatedFadeInPage } from "../../utils/";
 import dummy_chart from "./chart.png";
 import { useSelector } from "react-redux";
-import {
-  selectCurrentUserId,
-} from "../../redux/features/auth/authSlice";
+import { selectCurrentUserId } from "../../redux/features/auth/authSlice";
 import { useGetSingleProducerQuery } from "../../redux/features/producers/producersApiSlice";
 
-const ChartDummy = ()=>{
+const ChartDummy = () => {
   return (
     <div className={styles.chartdummy}>
       <img src={dummy_chart} alt="" />
     </div>
-  )
-}
+  );
+};
 
 const ProducerOverviewPage = () => {
   const userId = useSelector(selectCurrentUserId);
 
-  // const userType = useSelector(selectCurrentUserType);
-
-  const {  
-    data,
-    isLoading,
-    isSuccess,
-    isError,
-  } = useGetSingleProducerQuery(userId);
+  const { data, isLoading, isSuccess, isError } =
+    useGetSingleProducerQuery(userId);
 
   console.log(data?.data?.attributes);
 
-    let content;
+  let content;
   if (isLoading) {
-    content = (
-      <p>Loading...</p>
-    );
+    content = <p>Loading...</p>;
   } else if (isSuccess) {
     content = (
       <>
         <div className={styles.summary_container}>
-          <h3>Sales</h3>
+          <div>
+            <p>Totals Profile Views</p>
+            <p className={styles.highlight}>
+              {data?.data?.attributes?.profile_views}
+            </p>
+          </div>
 
-          <p>Totals Views</p>
-          <p className={styles.salesCount}>{data?.data?.attributes?.profile_views}</p>
-          {/* <p>Total Amount</p>
-          <p className={styles.amount}>
-            NGN {artistesSales.total_amount_spent}
-          </p> */}
-          <p>Total Sales</p>
-          <p className={styles.salesCount}>
-            {data?.data?.attributes?.total_beats_purchased}
-          </p>
+          <div>
+            <p>Total Purchases(Income)</p>
+            <p className={styles.highlight}>
+              NGN {data?.data?.attributes?.total_revenue}
+            </p>
+          </div>
+
+          <div>
+            <p>Total Sales</p>
+            <p className={styles.highlight}>
+              {data?.data?.attributes?.total_beats_sold}
+            </p>
+          </div>
         </div>
       </>
     );
@@ -57,17 +55,15 @@ const ProducerOverviewPage = () => {
     content = <h3>Something went wrong. Serverside Error. Reload Browser.</h3>;
   }
 
-
-
   return (
     <>
       <AnimatedFadeInPage>
         <main className={styles.ProducerOverviewPage}>
-        <h3 className={styles.title}>Stats</h3>
-      <div className={styles.main_container}>
-        {content}
-        <ChartDummy />
-      </div>
+          <h3 className={styles.title}>Stats</h3>
+          <div className={styles.main_container}>
+            {content}
+            <ChartDummy />
+          </div>
         </main>
       </AnimatedFadeInPage>
     </>
