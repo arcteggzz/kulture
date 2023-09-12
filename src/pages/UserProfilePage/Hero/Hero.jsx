@@ -2,7 +2,7 @@ import styles from "./Hero.module.scss";
 import { useState } from "react";
 import backgroundImage from "../images/hero.png";
 import profileImage from "../images/dummy_image_icon.jpg";
-import uploadImage from "../images/camera.png";
+// import uploadImage from "../images/camera.png";
 import dribbble from "../images/dribbble.png";
 import facebook from "../images/facebook.png";
 import instagram from "../images/instagram.png";
@@ -62,7 +62,7 @@ const Hero = () => {
       <div className={styles.uploadBtnContainer}>
         <div className={styles.upload_btn_wrapper}>
           <button className={styles.uploadFileBtn}>
-            <img src={uploadImage} alt="" className={styles.uploadImg} />
+            {/* <img src={uploadImage} alt="" className={styles.uploadImg} /> */}
             <p>{currentUserType === "producer" ? "Producer" : "Artiste"}</p>
           </button>
           {/* <input type="file" name="myfile" /> */}
@@ -72,7 +72,7 @@ const Hero = () => {
       <div className={styles.textContainer}>
         <div className={styles.intro}>
           <h3>Intro</h3>
-          <Link className={styles.edit}>Edit</Link>
+          {/* <Link className={styles.edit}>Edit</Link> */}
         </div>
         <p>
           This is your user profile page. You can navigate to view your
@@ -92,7 +92,7 @@ const Hero = () => {
           <Link>
             <img src={instagram} alt="" />
           </Link>
-          <Link className={styles.edit}>Edit</Link>
+          {/* <Link className={styles.edit}>Edit</Link> */}
         </div>
       </div>
     </div>

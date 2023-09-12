@@ -13,6 +13,7 @@ import {
 } from "../../redux/features/auth/authSlice";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { BASE_URL } from "../../utils/apiRoutePaths";
 
 const UploadPage = () => {
   const currentUserAccessToken = useSelector(selectCurrentAccessToken);
@@ -108,15 +109,11 @@ const UploadPage = () => {
     //   });
 
     axios
-      .post(
-        "https://kulture-api.onrender.com/api/v1/beats/upload",
-        bodyFormData,
-        {
-          headers: {
-            Authorization: `Bearer ${currentUserAccessToken}`,
-          },
-        }
-      )
+      .post(`${BASE_URL}/beats/upload`, bodyFormData, {
+        headers: {
+          Authorization: `Bearer ${currentUserAccessToken}`,
+        },
+      })
       .then((response) => {
         // Handle the response from the server
         if (response.status) {
@@ -255,7 +252,7 @@ const UploadPage = () => {
                         </div>
                       </div>
                       <p className={styles.max}>
-                        Max. File Size<span>: 500MB</span>
+                        Max. File Size<span>: 2MB</span>
                       </p>
                     </div>
                     <div>

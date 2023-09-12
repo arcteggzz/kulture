@@ -18,8 +18,7 @@ export default function LoginModal() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from =
-    location.state?.from?.pathname || routePaths.USERPROFILEPAGEROUTES.OVERVIEW;
+
   const [accountLoginLoading, setAccountLoginLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -79,6 +78,16 @@ export default function LoginModal() {
           setAccountLoginLoading(false);
 
           setTimeout(() => {
+            const destinationPath =
+              response?.data?.user?.attributes?.user_type === "producer"
+                ? routePaths.USERPROFILEPAGEROUTES.PRODUCER.OVERVIEW
+                : routePaths.USERPROFILEPAGEROUTES.ARTISTE.OVERVIEW;
+
+            const from =
+              location.state?.from?.pathname ||
+              destinationPath ||
+              routePaths.LANDINGPAGE;
+
             navigate(from, { replace: true });
             dispatch(closeLoginModal());
           }, 3000);

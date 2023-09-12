@@ -25,6 +25,7 @@ import {
   ProducerTopBeatsPage,
   OverviewPage,
   BeatsOffersPage,
+  VerifyPaymentPage, ProducerOverviewPage,ArtistOverviewPage
 } from "./pages";
 
 //lazyLoading for pages
@@ -52,6 +53,10 @@ const App = () => {
             />
             <Route path={`${routePaths.SEARCHPAGE}`} element={<SearchPage />} />
             <Route
+              path={`${routePaths.VERIFYPAYMENT}`}
+              element={<VerifyPaymentPage />}
+            />
+            <Route
               path={`${routePaths.BUYBEATSPAGE}`}
               element={<BeatsOffersPage />}
             />
@@ -74,12 +79,20 @@ const App = () => {
                   element={<OverviewPage />}
                 />
                 <Route
+                  path={`${routePaths.USERPROFILEPAGEROUTES.ARTISTE.OVERVIEW}`}
+                  element={<ArtistOverviewPage />}
+                />
+                <Route
                   path={`${routePaths.USERPROFILEPAGEROUTES.ARTISTE.PURCHASED_BEATS}`}
                   element={<ArtistAllBeatsPage />}
                 />
                 <Route
                   path={`${routePaths.USERPROFILEPAGEROUTES.ARTISTE.FAVORITES}`}
                   element={<ArtistFavoriteBeatsPage />}
+                />
+                <Route
+                  path={`${routePaths.USERPROFILEPAGEROUTES.PRODUCER.OVERVIEW}`}
+                  element={<ProducerOverviewPage />}
                 />
                 <Route
                   path={`${routePaths.USERPROFILEPAGEROUTES.PRODUCER.ALL_BEATS_PRODUCED}`}

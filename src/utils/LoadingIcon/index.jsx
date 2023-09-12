@@ -2,7 +2,7 @@ import styles from "./LoadingIcon.module.scss";
 import DotLoader from "react-spinners/DotLoader";
 import PropTypes from "prop-types";
 
-const LoadingIcon = ({ loading }) => {
+const LoadingIcon = ({ loading, loaderSize = 40 }) => {
   //ClipLoader Styles
   const override = {
     display: "block",
@@ -16,7 +16,7 @@ const LoadingIcon = ({ loading }) => {
           color="#2e70cb"
           loading={loading}
           cssOverride={override}
-          size={40}
+          size={loaderSize}
           aria-label="Loading Spinner"
           data-testid="loader"
         />
@@ -29,4 +29,5 @@ export default LoadingIcon;
 
 LoadingIcon.propTypes = {
   loading: PropTypes.bool.isRequired,
+  loaderSize: PropTypes.number.isRequired,
 };

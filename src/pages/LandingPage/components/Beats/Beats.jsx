@@ -7,6 +7,7 @@ import heart from "../images/Heart.png";
 import share from "../images/share.png";
 // import deleteButton from "../images/deleteButton.png";
 import { useGetAllBeatsQuery } from "../../../../redux/features/beatsApiSlice/beatsApiSlice";
+import { LoadingIcon } from "../../../../utils";
 
 const Beats = () => {
   const {
@@ -18,7 +19,11 @@ const Beats = () => {
 
   let content;
   if (isLoading) {
-    content = <h3 className={styles.feedback}>loading</h3>;
+    content = (
+      <div className={styles.LoadingIcon_container}>
+        <LoadingIcon loading={isLoading} />
+      </div>
+    );
   } else if (isSuccess) {
     content = (
       <>
@@ -52,8 +57,8 @@ const Beats = () => {
                     className={styles.profileImage}
                   />
                   <p>
-                    {beat.attributes.name} <span>@ohuly</span>{" "}
-                    <span> • 2 Hours Ago</span>
+                    {beat.attributes.name}
+                    {/* <span> • 2 Hours Ago</span> */}
                   </p>
                 </div>
                 <div className={styles.beatDetails}>
@@ -69,7 +74,7 @@ const Beats = () => {
 
                   <div>
                     <h2>{beat.attributes.genre}</h2>
-                    <p>beat by {beat.attributes.name} @ohuly </p>
+                    {/* <p>beat by {beat.attributes.name} @ohuly </p> */}
                     <p> released on {date}</p>
                     <div className={styles.price}>
                       <p>NGN{beat.attributes.price}</p>

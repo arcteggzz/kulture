@@ -1,0 +1,63 @@
+.LoadingPayment {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.164);
+  backdrop-filter: blur(8.575px);
+
+  overflow-y: hidden;
+
+  .loading_container {
+    width: 550px;
+    min-height: 350px;
+    // height: 400px;
+    background: #1b1b1b;
+    border-radius: 32px;
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    align-items: center;
+    justify-content: space-between;
+
+    // p{
+    // 	c
+    // }
+
+    .button_load {
+      border-radius: 8px;
+      background: #d3beee;
+      color: var(--White, #000000);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 0.28px;
+      text-decoration: none;
+      padding: 20px 28px;
+      cursor: not-allowed;
+    }
+
+    .payment_button {
+      border-radius: 8px;
+      background: #6600e8;
+      color: var(--White, #fff);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 0.28px;
+      text-decoration: none;
+      padding: 20px 28px;
+      cursor: pointer;
+    }
+  }
+}

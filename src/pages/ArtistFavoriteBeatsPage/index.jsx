@@ -3,6 +3,7 @@ import { SingleBeatDetails } from "../../components";
 import { useSelector } from "react-redux";
 import { selectCurrentUserId } from "../../redux/features/auth/authSlice";
 import { useGetSingleArtistesQuery } from "../../redux/features/artistes/artistes";
+import { LoadingIcon } from "../../utils";
 
 const ArtistFavoriteBeatsPage = () => {
   const userId = useSelector(selectCurrentUserId);
@@ -16,29 +17,39 @@ const ArtistFavoriteBeatsPage = () => {
 
   let content;
   if (isLoading) {
-    content = <h3 className={styles.feedback}>loading</h3>;
+    content = (
+      <div className={styles.LoadingIcon_container}>
+        <LoadingIcon loading={isLoading} />
+      </div>
+    );
+  } else if (isSuccess && favouriteBeats?.data?.favourite_beats.length < 1) {
+    content = <h3>You have no favourite beat</h3>;
   } else if (isSuccess) {
     content = (
       <>
-        {favouriteBeats?.data?.favourite_beats.map((favouriteBeat) => {
+        {favouriteBeats.data.favourite_beats.map((favouriteBeat) => {
           const createdDate = new Date(favouriteBeat.created_at);
           const date = `${createdDate.getDate()}-${createdDate.getMonth()}-${createdDate.getFullYear()}`;
+          const size = Math.floor(favouriteBeat.size / 1024).toString();
 
-          const size = Math.floor(favouriteBeat.size / 1024);
-          <SingleBeatDetails
-            variant="artistefavouriteBeats"
-            beatImage={favouriteBeat.imageUrl}
-            beatName={favouriteBeat.name}
-            beatId={favouriteBeat.genre_id}
-            beatCost={`${favouriteBeat.price}`}
-            beatOwnerName={"John Carter"}
-            beatOwnerUsername={"arcteggzz"}
-            beatGenre={favouriteBeat.genre}
-            beatLicense={`Premium License `}
-            beatSize={size}
-            beatUploadDate={date}
-            beatLikes={favouriteBeat.like_count}
-          />;
+          return (
+            <>
+              <SingleBeatDetails
+                variant="artistefavouriteBeats"
+                beatImage={favouriteBeat.imageUrl}
+                beatName={favouriteBeat.name}
+                beatId={favouriteBeat.genre_id}
+                beatCost={`${favouriteBeat.price}`}
+                beatOwnerName={"John Carter"}
+                beatOwnerUsername={"arcteggzz"}
+                beatGenre={favouriteBeat.genre}
+                beatLicense={favouriteBeat.license_type}
+                beatSize={size}
+                beatUploadDate={date}
+                beatLikes={favouriteBeat.like_count}
+              />
+            </>
+          );
         })}
       </>
     );
@@ -52,37 +63,7 @@ const ArtistFavoriteBeatsPage = () => {
 
   return (
     <>
-      <section className={styles.ArtistFavoriteBeatsPage}>
-        {content}
-        <SingleBeatDetails
-          variant="artisteFavoriteBeats"
-          beatImage={null}
-          beatName={"ArtistFavoriteBeatsPage"}
-          beatId={"8965ggy89"}
-          beatCost={`400,000`}
-          beatOwnerName={"John Carter"}
-          beatOwnerUsername={"arcteggzz"}
-          beatGenre={"AfroPop"}
-          beatLicense={`Premium License `}
-          beatSize={"14mb"}
-          beatUploadDate={"24-12-2022"}
-          beatLikes={35}
-        />
-        <SingleBeatDetails
-          variant="artisteFavoriteBeats"
-          beatImage={null}
-          beatName={"ArtistFavoriteBeatsPage"}
-          beatId={"8965ggy89"}
-          beatCost={`400,000`}
-          beatOwnerName={"John Carter"}
-          beatOwnerUsername={"arcteggzz"}
-          beatGenre={"AfroPop"}
-          beatLicense={`Premium License `}
-          beatSize={"14mb"}
-          beatUploadDate={"24-12-2022"}
-          beatLikes={35}
-        />
-      </section>
+      <section className={styles.ArtistFavoriteBeatsPage}>{content}</section>
     </>
   );
 };

@@ -123,6 +123,14 @@
   .custom_audio.custom_audio::-webkit-media-controls-time-remaining-display {
     display: none;
   }
+
+  .LoadingIcon_container {
+    width: 50vw;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 

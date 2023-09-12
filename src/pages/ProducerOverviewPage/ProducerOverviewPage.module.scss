@@ -1,0 +1,49 @@
+@use "../../assets/styles/" as *;
+
+.ProducerOverviewPage {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 100%;
+  padding: 20px pixRem(100) 100px pixRem(100);
+  min-height: 80vh;
+
+  @include sm() {
+  }
+
+  .main_container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    column-gap: 80px;
+
+    .summary_container {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+
+      border-radius: 8px;
+      background: var(--Background-Grey, #1b1b1b);
+
+      padding: 24px;
+      width: 35%;
+
+      div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .highlight {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+.chartdummy {
+  img {
+    width: 30vw;
+    height: auto;
+  }
+}
