@@ -7,7 +7,7 @@ import { selectCurrentUserType } from "../../../redux/features/auth/authSlice";
 const UserProfileNavigation = () => {
   const producerNavElements = [
     {
-      link: routePaths.USERPROFILEPAGEROUTES.OVERVIEW,
+      link: routePaths.USERPROFILEPAGEROUTES.PRODUCER.OVERVIEW,
       name: "Stats/Overview",
     },
     {
@@ -22,7 +22,7 @@ const UserProfileNavigation = () => {
 
   const artistNavElements = [
     {
-      link: routePaths.USERPROFILEPAGEROUTES.OVERVIEW,
+      link: routePaths.USERPROFILEPAGEROUTES.ARTISTE.OVERVIEW,
       name: "Stats/Overview",
     },
     {
