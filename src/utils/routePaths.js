@@ -14,10 +14,12 @@ const routePaths = {
     PRODUCER: {
       ALL_BEATS_PRODUCED: "/dashboard/producer-all-beats",
       TOP_BEATS: "/dashboard/producer-top-beats",
+      OVERVIEW: "/dashboard/producer-overview",
     },
     ARTISTE: {
       PURCHASED_BEATS: "/dashboard/artiste-all-beats",
       FAVORITES: "/dashboard/artiste-favorites",
+      OVERVIEW: "/dashboard/artiste-overview",
     },
   },
 };

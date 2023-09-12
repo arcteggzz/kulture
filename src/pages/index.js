@@ -16,3 +16,5 @@ export { default as ProducerAllBeatsPage } from "./ProducerAllBeatsPage";
 export { default as ProducerTopBeatsPage } from "./ProducerTopBeatsPage";
 export { default as BeatsOffersPage } from "./BeatsOffersPage";
 export { default as VerifyPaymentPage } from "./VerifyPaymentPage";
+export { default as ProducerOverviewPage } from "./ProducerOverviewPage";
+export { default as ArtistOverviewPage } from "./ArtistOverviewPage";

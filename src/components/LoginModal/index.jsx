@@ -19,7 +19,7 @@ export default function LoginModal() {
   const navigate = useNavigate();
   const location = useLocation();
   const from =
-    location.state?.from?.pathname || routePaths.USERPROFILEPAGEROUTES.OVERVIEW;
+    location.state?.from?.pathname || routePaths.USERPROFILEPAGE;
   const [accountLoginLoading, setAccountLoginLoading] = useState(false);
 
   const dispatch = useDispatch();

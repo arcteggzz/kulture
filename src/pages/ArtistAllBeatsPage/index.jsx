@@ -22,16 +22,16 @@ const ArtistAllBeatsPage = () => {
         <LoadingIcon loading={isLoading} />
       </div>
     );
-  } else if (isSuccess && purchasedBeats?.data?.purchased_beats.length < 1) {
+  } else if (isSuccess && purchasedBeats?.data?.purchased_beats?.length < 1) {
     content = <h3>You have no beat purchased</h3>;
   } else if (isSuccess) {
     content = (
       <>
-        {purchasedBeats?.data?.purchased_beats.map((purchasedBeat) => {
-          const createdDate = new Date(purchasedBeat.created_at);
+        {purchasedBeats?.data?.purchased_beats?.map((purchasedBeat) => {
+          const createdDate = new Date(purchasedBeat?.created_at);
           const date = `${createdDate.getDate()}-${createdDate.getMonth()}-${createdDate.getFullYear()}`;
 
-          const size = Math.floor(purchasedBeat.size / 1024).toString();
+          const size = Math.floor(purchasedBeat?.size / 1024).toString();
 
           return (
             <>
