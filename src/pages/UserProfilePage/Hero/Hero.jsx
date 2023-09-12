@@ -72,7 +72,7 @@ const Hero = () => {
       <div className={styles.textContainer}>
         <div className={styles.intro}>
           <h3>Intro</h3>
-          <Link className={styles.edit}>Edit</Link>
+          {/* <Link className={styles.edit}>Edit</Link> */}
         </div>
         <p>
           This is your user profile page. You can navigate to view your
@@ -92,7 +92,7 @@ const Hero = () => {
           <Link>
             <img src={instagram} alt="" />
           </Link>
-          <Link className={styles.edit}>Edit</Link>
+          {/* <Link className={styles.edit}>Edit</Link> */}
         </div>
       </div>
     </div>

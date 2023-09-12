@@ -6,7 +6,7 @@ import cart from "./images/shopping-cart.png";
 import profile from "./images/profile-circle.png";
 import profileImage from "./images/profileImage.jpg";
 import arrow from "./images/arrow-right.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { routePaths } from "../../utils";
 import searchIcon from "./images/search-icon.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,20 +15,61 @@ import {
   selectCurrentAccessToken,
   selectCurrentUserFirstName,
   selectCurrentUserType,
+  resetCredentials,
 } from "../../redux/features/auth/authSlice";
+import { useState } from "react";
+import logout_icon from "./images/logout.png";
+import { BASE_URL } from "../../utils/apiRoutePaths";
+import axios from "axios";
+import { LoadingScreen } from "../../utils";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Navbar() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const currentUser = useSelector(selectCurrentUserFirstName);
   const currentUserType = useSelector(selectCurrentUserType);
   const currentToken = useSelector(selectCurrentAccessToken);
 
-  const login = currentToken;
+  const [dropDownNavOpen, setDropDownNavOpen] = useState(false);
+  const [logoutLoading, setLogoutLoading] = useState(false);
 
   const openLoginModalHandler = () => {
     dispatch(openLoginModal());
+  };
+
+  const handleLogout = () => {
+    setLogoutLoading(true);
+
+    axios
+      .post(`${BASE_URL}/signout`, null, null)
+      .then((response) => {
+        console.log(response);
+        setLogoutLoading(false);
+        toast.success(`Sign out Successful. Routing to Home.`, {
+          autoClose: 1400,
+        });
+        const from = routePaths.LANDINGPAGE;
+
+        navigate(from, { replace: true });
+        dispatch(resetCredentials());
+
+        // setTimeout(() => {
+        //   const from = routePaths.LANDINGPAGE;
+
+        //   navigate(from, { replace: true });
+        // }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLogoutLoading(false);
+        toast.success(`Sign out failed.`, {
+          autoClose: 2400,
+        });
+      });
   };
 
   return (
@@ -108,7 +149,7 @@ export default function Navbar() {
                 <></>
               )}
             </div>
-            {!login ? (
+            {!currentToken ? (
               <div className={styles.signContainer}>
                 <button
                   onClick={() => openLoginModalHandler()}
@@ -122,7 +163,12 @@ export default function Navbar() {
                 </Link>
               </div>
             ) : (
-              <div className={styles.login}>
+              <div
+                className={styles.login}
+                onClick={() =>
+                  setDropDownNavOpen((dropDownNavOpen) => !dropDownNavOpen)
+                }
+              >
                 <img
                   src={profileImage}
                   alt="Profile Image"
@@ -130,11 +176,28 @@ export default function Navbar() {
                 />
                 <p>Hi, {currentUser}</p>
                 <img src={arrow} alt="Profile Image" />
+
+                {dropDownNavOpen ? (
+                  <>
+                    <button
+                      className={styles.DropDownNavOpen_container}
+                      onClick={handleLogout}
+                    >
+                      <img src={logout_icon} alt="" />
+                      <p className={styles.button_text}>Logout</p>
+                    </button>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
             )}
           </div>
         </div>
       </nav>
+
+      {logoutLoading ? <LoadingScreen loading={logoutLoading} /> : <></>}
+      <ToastContainer />
     </>
   );
 }
