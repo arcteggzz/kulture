@@ -2,14 +2,14 @@ import styles from "./SearchPage.module.scss";
 import { AnimatedFadeInPage } from "../../utils/";
 import Beats from "../LandingPage/components/Beats/Beats.jsx";
 import BrowseBeats from "./BrowseBeats/BrowseBeats";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const SearchPage = () => {
   return (
     <>
       <AnimatedFadeInPage>
         <main className={styles.SearchPage}>
-            <div className={styles.filter}>
+            {/* <div className={styles.filter}>
               <Link className={styles.link}>All</Link>
               <Link className={styles.link}>Afro drill</Link>
               <Link className={styles.link}>Afro trap</Link>
@@ -23,7 +23,7 @@ const SearchPage = () => {
                   <option value="C">C</option>
                 </select>
               </form>
-            </div>
+            </div> */}
           <div className={styles.beats}>
             <Beats />
           </div>
