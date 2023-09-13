@@ -1,6 +1,6 @@
 import styles from "./BeatsOffersPage.module.scss";
 import { AnimatedFadeInPage } from "../../utils";
-import { useGetAllBeatsQuery } from "../../redux/features/beatsApiSlice/beatsApiSlice";
+// import { useGetAllBeatsQuery } from "../../redux/features/beatsApiSlice/beatsApiSlice";
 import beatImg from "../LandingPage/components/images/beatImg.png";
 import heart from "../LandingPage/components/images/Heart.png";
 import share from "../LandingPage/components/images/share.png";
@@ -10,7 +10,7 @@ import { LoadingIcon } from "../../utils";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectCurrentAccessToken } from "../../redux/features/auth/authSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { LoadingScreen } from "../../utils";
 import { BASE_URL } from "../../utils/apiRoutePaths";
@@ -23,12 +23,17 @@ const BeatsOffersPage = () => {
   const [addToFavouriteLoading, setAddToFavouriteLoading] = useState(false);
   const [addToFavouriteError, setAddToFavouriteError] = useState("");
 
-  const {
-    data: allBeats,
-    isLoading,
-    isSuccess,
-    isError,
-  } = useGetAllBeatsQuery();
+  const [allBeatsData, setAllBeatsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
+
+  // const {
+  //   data: allBeats,
+  //   isLoading,
+  //   isSuccess,
+  //   isError,
+  // } = useGetAllBeatsQuery();
 
   const handleAddToCart = (beatId) => {
     setAddToCartLoading(true);
@@ -117,17 +122,41 @@ const BeatsOffersPage = () => {
       });
   };
 
+  useEffect(() => {
+    // Define the URL for your GET request
+    const apiUrl = `${BASE_URL}/beats`; // Replace with your API endpoint
+
+    // Make the GET request when the component mounts
+    fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        console.log(responseData);
+        setAllBeatsData(responseData.data.data);
+        setLoading(false);
+        setSuccess(true);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
   let content;
-  if (isLoading) {
+  if (loading) {
     content = (
       <div className={styles.LoadingIcon_container}>
-        <LoadingIcon loading={isLoading} />
+        <LoadingIcon loading={loading} />
       </div>
     );
-  } else if (isSuccess) {
+  } else if (success) {
     content = (
       <>
-        {allBeats.data.data.map((beat) => {
+        {allBeatsData.map((beat) => {
           const months = [
             "January",
             "February",
@@ -226,7 +255,7 @@ const BeatsOffersPage = () => {
         })}
       </>
     );
-  } else if (isError) {
+  } else if (error) {
     content = (
       <h3 className={styles.feedback}>
         something went wrong. Please try again.
