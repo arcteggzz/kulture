@@ -118,6 +118,7 @@ const SearchPage = () => {
             </div>
           </div>
 
+          {/* this is a dummy to enable you build the component */}
           <div className={styles.beats}>
             {fakeSearchArray.map((fake) => {
               return (
@@ -135,7 +136,6 @@ const SearchPage = () => {
           ) : (
             <></>
           )}
-
           {content}
         </main>
       </AnimatedFadeInPage>
