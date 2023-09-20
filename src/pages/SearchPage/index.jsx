@@ -8,20 +8,20 @@ import axios from "axios";
 import { LoadingIcon } from "../../utils/";
 
 const SearchPage = () => {
-  const fakeSearchArray = [
-    {
-      fake: "fake",
-      id: 1,
-    },
-    {
-      fake: "fake",
-      id: 2,
-    },
-    {
-      fake: "fake",
-      id: 3,
-    },
-  ];
+  // const fakeSearchArray = [
+  //   {
+  //     fake: "fake",
+  //     id: 1,
+  //   },
+  //   {
+  //     fake: "fake",
+  //     id: 2,
+  //   },
+  //   {
+  //     fake: "fake",
+  //     id: 3,
+  //   },
+  // ];
 
   const [stringToSearch, setStringToSearch] = useState("");
   const [beatsToDisplay, setBeatsToDisplay] = useState([]);
@@ -76,11 +76,20 @@ const SearchPage = () => {
         <h2
           style={{ textAlign: "center" }}
         >{`Found ${beatsToDisplay.length} beat(s) that match the "${stringToSearch}" keyword`}</h2>
-        <div className={styles.beats}>
-          {beatsToDisplay.map((beats) => {
+        <div className={styles.searchBeats_container}>
+          {beatsToDisplay.map((beat, index) => {
             return (
               <>
-                <SingleBeatSearch key={beats.id} />
+                <SingleBeatSearch
+                  key={beat.id}
+                  position={index + 1}
+                  beatName={beat.name}
+                  size={beat.size}
+                  genre={beat.genre}
+                  license={beat.license_type}
+                  availableCopies={beat.available_copies}
+                  copiesSold={beat.copies_sold}
+                />
               </>
             );
           })}
@@ -119,15 +128,24 @@ const SearchPage = () => {
           </div>
 
           {/* this is a dummy to enable you build the component */}
-          <div className={styles.beats}>
-            {fakeSearchArray.map((fake) => {
+          {/* <div className={styles.searchBeats_container}>
+            {fakeSearchArray.map((beat) => {
               return (
                 <>
-                  <SingleBeatSearch key={fake.id} />
+                  <SingleBeatSearch
+                    key={beat.id}
+                    position={beat.available_copies}
+                    beatName={beat.name}
+                    size={beat.size}
+                    genre={beat.genre}
+                    license={beat.license_type}
+                    availableCopies={beat.available_copies}
+                    copiesSold={beat.copies_sold}
+                  />
                 </>
               );
             })}
-          </div>
+          </div> */}
 
           {stringToSearch.length < 1 ? (
             <>
