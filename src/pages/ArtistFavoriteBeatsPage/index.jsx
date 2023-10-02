@@ -38,7 +38,7 @@ const ArtistFavoriteBeatsPage = () => {
                 variant="artistefavouriteBeats"
                 beatImage={favouriteBeat.imageUrl}
                 beatName={favouriteBeat.name}
-                beatId={favouriteBeat.genre_id}
+                beatId={favouriteBeat.id}
                 beatCost={`${favouriteBeat.price}`}
                 beatOwnerName={"John Carter"}
                 beatOwnerUsername={"arcteggzz"}

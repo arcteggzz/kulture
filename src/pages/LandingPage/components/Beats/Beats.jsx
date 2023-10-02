@@ -62,14 +62,16 @@ const Beats = () => {
                   </p>
                 </div>
                 <div className={styles.beatDetails}>
-                  <img src={beatImg} alt="Beat" className={styles.beatImg} />
-                  <div className={styles.audio_container}>
-                    <audio
-                      src={beat.attributes.file_url}
-                      controls
-                      controlsList="nodownload noplaybackrate"
-                      className={styles.custom_audio}
-                    />
+                <div className={styles.imgPosition}>
+                    <img src={beatImg} alt="Beat" className={styles.beatImg} />
+                    <div className={styles.audio_container}>
+                      <audio
+                        src={beat.attributes.file_url}
+                        controls
+                        controlsList="nodownload noplaybackrate"
+                        className={styles.custom_audio}
+                      />
+                    </div>
                   </div>
 
                   <div>
