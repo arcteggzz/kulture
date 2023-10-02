@@ -4,6 +4,7 @@ import { useGetAllBeatsQuery } from "../../redux/features/beatsApiSlice/beatsApi
 import beatImg from "../LandingPage/components/images/beatImg.png";
 import heart from "../LandingPage/components/images/Heart.png";
 import share from "../LandingPage/components/images/share.png";
+import searchIcon from "./image/search-icon.png";
 import { LoadingIcon } from "../../utils";
 // import { useDispatch } from "react-redux";
 // import { addToCart } from "../../redux/features/cart/cartSlice";
@@ -22,6 +23,7 @@ const BeatsOffersPage = () => {
   const [addToCartError, setAddToCartError] = useState("");
   const [addToFavouriteLoading, setAddToFavouriteLoading] = useState(false);
   const [addToFavouriteError, setAddToFavouriteError] = useState("");
+  const [searchBeat, setSearchBeat] = useState("");
 
   const {
     data: allBeats,
@@ -117,6 +119,21 @@ const BeatsOffersPage = () => {
       });
   };
 
+  const handleSearch = (value) => {
+
+    console.log(value);
+    fetch(`${BASE_URL}/beats/search/${value}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        
+      })
+      .catch((error) => {
+        console.log(error);
+        
+      });
+  };
+
   let content;
   if (isLoading) {
     content = (
@@ -163,14 +180,16 @@ const BeatsOffersPage = () => {
                   </p>
                 </div>
                 <div className={styles.beatDetails}>
-                  <img src={beatImg} alt="Beat" className={styles.beatImg} />
-                  <div className={styles.audio_container}>
-                    <audio
-                      src={beat.attributes.file_url}
-                      controls
-                      controlsList="nodownload noplaybackrate"
-                      className={styles.custom_audio}
-                    />
+                  <div className={styles.imgPosition}>
+                    <img src={beatImg} alt="Beat" className={styles.beatImg} />
+                    <div className={styles.audio_container}>
+                      <audio
+                        src={beat.attributes.file_url}
+                        controls
+                        controlsList="nodownload noplaybackrate"
+                        className={styles.custom_audio}
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -196,8 +215,7 @@ const BeatsOffersPage = () => {
                           //   })
                           // );
                           handleAddToCart(beat.id);
-                        }}
-                      >
+                        }}>
                         BUY NOW
                       </button>
                       {/* <button type="button" className={styles.editBtn}>Edit</button>
@@ -214,8 +232,7 @@ const BeatsOffersPage = () => {
                   </div>
                   <button
                     className={styles.btnFlex}
-                    onClick={() => handleAddToFavorites(beat.id)}
-                  >
+                    onClick={() => handleAddToFavorites(beat.id)}>
                     <img src={heart} />
                     <p className={styles.save}>Save for later</p>
                   </button>
@@ -237,6 +254,25 @@ const BeatsOffersPage = () => {
   return (
     <>
       <AnimatedFadeInPage>
+        <div className={styles.searchBtn}>
+          <div>
+            <input
+              className={styles.find}
+              type="text"
+              name="search"
+              placeholder="Search"
+              value={searchBeat}
+              onChange={(e) => setSearchBeat(e.target.value)}
+            />
+            <button
+              className={styles.searchIcon}
+              onClick={() => {
+                handleSearch(searchBeat);
+              }}>
+              <img src={searchIcon} />
+            </button>
+          </div>
+        </div>
         <main className={styles.BeatsOffersPage}>
           <p className={styles.errorText}>{addToCartError}</p>
           <p className={styles.errorText}>{addToFavouriteError}</p>

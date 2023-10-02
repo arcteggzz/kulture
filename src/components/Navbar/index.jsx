@@ -6,9 +6,9 @@ import cart from "./images/shopping-cart.png";
 import profile from "./images/profile-circle.png";
 import profileImage from "./images/profileImage.jpg";
 import arrow from "./images/arrow-right.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routePaths } from "../../utils";
-import searchIcon from "./images/search-icon.png";
+// import searchIcon from "./images/search-icon.png";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal } from "../../redux/features/loginModal/loginModalSlice";
 import {
@@ -26,7 +26,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Navbar() {
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -81,7 +81,7 @@ export default function Navbar() {
               <img src={kulture_logo} alt="" className={styles.logo} />
             </Link>
             {/* Search bar goes inside the div below */}
-            {pathname !== `${routePaths.LANDINGPAGE}` ? (
+            {/* {pathname !== `${routePaths.LANDINGPAGE}` ? (
               <div>
                 <input
                   className={styles.input_container}
@@ -93,7 +93,7 @@ export default function Navbar() {
               </div>
             ) : (
               <></>
-            )}
+            )} */}
           </div>
 
           <div className={styles.links}>

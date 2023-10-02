@@ -13,7 +13,7 @@ export default function SingleBeatDetails({
   beatGenre,
   beatLicense,
   beatSize,
-  beatUploadDate,
+  // beatUploadDate,
   beatLikes,
 }) {
   return (
@@ -68,7 +68,7 @@ export default function SingleBeatDetails({
           </div>
 
           <div className={styles.right_side_footer}>
-            <p className={styles.beat_date_text}>{beatUploadDate}</p>
+            {/* <p className={styles.beat_date_text}>{beatUploadDate}</p> */}
 
             <div className={styles.button_container}>
               {variant === "producerAllBeats" ? (
